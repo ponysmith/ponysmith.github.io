@@ -1,0 +1,232 @@
+/* =========================================================================== */
+/* Reset
+/* =========================================================================== */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}/* HTML5 display-role reset for older browsers */article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+/* =========================================================================== */
+/* Elements
+/* =========================================================================== */
+html {
+    min-height: 100%;
+    background-color: #efefef;
+    color: #555;
+}
+body {
+    min-height: 100%;
+    font-size: 14px;
+    font-family: "Myriad Pro", "Trebuchet MS", sans-serif;
+    line-height: 18px;
+}
+p {
+   line-height: 18px;
+   margin: 0 0 24px; 
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    outline: none;
+    color: #0069aa;
+}
+
+/* Headers */
+h1 {
+    color: #1a7fda;
+    text-transform: uppercase;
+    font-size: 26px;    
+    font-weight: 400;
+    margin: 40px 0 20px;
+    line-height: 1.3em;
+}
+h2 {
+    display: block;
+    color: #3f4444;
+    font-size: 24px;    
+    font-weight: 400;
+    margin: 30px 0 10px;
+    line-height: 1.3em;
+}
+h3 {
+    display: block;
+    color: #3f4444;
+    font-size: 20px;    
+    font-weight: 400;
+    margin: 30px 0 5px;
+    line-height: 1.3em;
+}
+h4 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #3c3c3c;
+    margin: 10px 0 5px;
+}
+
+/* Lists */
+ul, ol {
+    margin: 24px 0 24px 24px;
+    line-height: 18px;
+}
+ul li {
+    list-style: disc;
+}
+ol li {
+    list-style: decimal;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    margin: 18px 0 18px 24px;
+}
+
+/* Horizontal Rules */
+hr { height: 0; border-top: 1px solid #999; margin: 30px 0; }
+hr.double { height: 4px; border-bottom: 1px solid #999; }
+hr.diagonal { border: none; height: 10px; background: transparent url(../images/ui/pattern-diag-gray.png); }
+
+
+
+/* =========================================================================== */
+/* Header
+/* =========================================================================== */
+#header-wrapper {
+    width: 100%;
+    background-color: #333;
+}
+#header-content {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+}
+#header-content h1 {
+    padding: 0 10px 0 60px;
+    margin: 0;
+    color: #aaa;
+    font-weight: normal;
+    text-transform: none;
+    display: inline-block;
+    width: 300px;
+    line-height: 50px;
+    vertical-align: middle;
+}
+#header-content h1 a:hover,
+#header-content h1 a:focus {
+    color: #777;
+}
+#header-content h1 strong {
+    color: #eee;
+}
+
+/* 768 */
+@media only screen and (min-width: 768px) {
+    #header-content h1 { 
+        padding: 0 10px;
+    }
+}
+
+
+
+/* =========================================================================== */
+/* Nav
+/* =========================================================================== */
+#nav {
+    display: none;
+    background-color: #222;
+}
+#nav ul {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+}
+#nav li {
+    font-size: 13px;
+    list-style: none;
+    display: inline-block;
+}
+#nav a {
+    text-transform: uppercase;
+    display: block;
+    padding: 15px 15px;
+    line-height: 20px;
+    height: 20px;
+    vertical-align: middle;
+    color: #aaa;
+    background-color: transparent;
+}
+#nav a:hover,
+#nav a:focus {
+    color: #fff;
+    background-color: #0069aa;
+}
+#nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0;
+    height: 30px;
+    width: 30px;
+    padding: 10px;
+    cursor: pointer;
+    background: transparent url(../images/nav-toggle.png) no-repeat 10px 10px;
+}
+#nav-toggle-label:hover,
+#nav-toggle-label:focus {
+    background-color: #222;
+}
+#nav-toggle-input {
+    position: absolute;
+    left: -99999px;
+}
+
+@media only screen and (max-width: 768px) {
+    #nav-toggle-input:checked ~ #nav-toggle-label {
+        background-color: #222;
+    }    
+    #nav-toggle-input:checked ~ #nav {
+        display: block;
+    }    
+}
+
+/* 768 */
+@media only screen and (min-width: 768px) {
+    #nav-toggle-label {
+        left: -99999px;
+    }
+    #nav {
+        display: inline-block;
+        background-color: transparent;
+    }
+}
+
+
+
+/* =========================================================================== */
+/* Page
+/* =========================================================================== */
+#page-wrapper {
+    width: 100%;
+    background-color: #efefef;
+}
+#page-content {
+    max-width: 940px;
+    padding: 20px 10px;
+    margin: 0 auto;
+    color: #666;
+}
+
+
+
+/* =========================================================================== */
+/* Footer
+/* =========================================================================== */
+#footer-wrapper {
+}
+#footer-content {
+    max-width: 940px;
+    padding: 20px 10px;
+    margin: 0 auto;
+}
+
+
