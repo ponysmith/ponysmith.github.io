@@ -7,12 +7,15 @@
     <meta name="description" content="ponysmith.github.io" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
-    
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/homepage.css" />
 
-    <title>dis is it | ponysmith.github.io</title>
+    <script>window.isHomepage = true;</script>
+	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	
+    <title>ponysmith.github.io</title>
 </head>
 
-<body id="">
+<body>
 
 <div id="header-wrapper">
     <header id="header-content">
@@ -22,33 +25,64 @@
 	    <label for="nav-toggle-input" id="nav-toggle-label">Toggle mobile navigation</label>
 	    <nav id="nav">
 	    	<ul>
-	    		<li><a href="/brevity">brevity</a></li>
-	    		<li><a href="/imgin">imgin</a></li>
-	    		<li><a href="/updown">updown</a></li>
-	    		<li><a href="/shyft">shyft</a></li>
-	    		<li><a href="/pinnd">pinnd</a></li>
+	    		<li id="nav-brevity">
+	    			<a class="nav-link" href="/brevity">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">brevity</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-imgin">
+	    			<a class="nav-link" href="/imgin">
+    					<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">imgin</span>
+	    			</a>
+    			</li>
+	    		<li id="nav-updown">
+	    			<a class="nav-link" href="/updown">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">updown</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-pinnd">
+	    			<a class="nav-link" href="/pinnd">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">pinnd</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-shyft">
+	    			<a class="nav-link" href="/shyft">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">shyft</span>
+	    			</a>
+	    		</li>
 	    	</ul>
 	    </nav>
     </header>
 </div>
 
 
-<div id="page-wrapper">
-    <section id="page-content">
-        Woot!
-    </section>
-</div>
 
-<div id="footer-wrapper">
-    <footer id="footer-content">
-    	footer
-    </footer>
-</div>
+<div id="homepage-wrapper">
+    <section class="homepage-section" id="hp-index">
+</section>
 
+<section class="homepage-section" id="hp-brevity">
+</section>
+
+<section class="homepage-section" id="hp-imgin">
+</section>
+
+<section class="homepage-section" id="hp-updown">
+</section>
+
+<section class="homepage-section" id="hp-pinnd">
+</section>
+
+<section class="homepage-section" id="hp-shyft">
+</section>
+
+</div>
 
 </body>
-
-<script type="text/javascript" src="/js/core.js"></script>
-
 
 </html>

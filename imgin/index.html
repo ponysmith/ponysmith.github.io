@@ -1,0 +1,195 @@
+---
+layout: default
+title: Documentation
+project: imgin
+---
+
+
+<p>
+<strong>imgin.js</strong> is a javascript plugin for lazy-loading images.  The plugin is extremely lightweight (1Kb minified) and is focused on performance and providing useful functionality beyond simple lazy loading.
+</p>
+
+
+<h2>Dependencies</h2>
+<strong>updown.js</strong> requires jQuery 1.7+ to run.</p>
+
+
+
+<h2>Usage</h2>
+<p>
+While not a traditional jQuery plugin, <storng>imgin</strong> does rely on jQuery, so make sure you're calling
+the <code>imgin()</code> function within your <code>$(document).ready()</code> block.
+</p>
+
+<h3>HTML</h3>
+<p>
+To work properly, <strong>imgin</strong> requires that you add an attribute to your <code>img</code> tags in your HTML.
+By default, this attribute is <code>data-imginsrc</code>, but can be changed via the options object when <strong>imgin</strong>
+is initialized.  This attribute must exist on any image you want <strong>imgin</strong> to lazy load and the value of the
+attribute should be the path to the image (just as you would write it in a normal image <code>src</code> attribute). 
+</p>
+<div class="msg-warn">
+    <div class="msgcontent">
+        There are two important things to note about the HTML:
+        <ol>
+            <li>
+                Your image tags should <strong>NOT</strong> include a normal <code>src</code> attribute.  The <code>src</code>
+                attribute will be created by <strong>imgin</strong> dynamically.  Adding a <code>src</code> attribute is
+                redundant and can impact performance since <code>src</code> attributes (even empty ones) trigger an HTTP request.
+            </li>
+            <li>
+                Your images should be manually assigned width and height (either in the <code>img</code> tag or via CSS). 
+                Without dimensions, the images will take up no space on the page until they load, meaning you'll get a lot
+                of content jumping around as various images load.
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+<h3>Javascript</h3>
+<p>
+Once you have your HTML set up and have included the <strong>imgin</strong> JS file in your page, 
+you can initialize the plugin by calling the <code>imgin()</code> function.
+The function takes an optional options object as its single argument.  See below for more information on the options object.
+</p>
+
+<div class="code-wrapper">
+{% highlight javascript linenos %}
+// Sample JS
+var opts = {
+    // Set options here
+}
+imgin(opts);
+{% endhighlight %}
+</div>
+
+
+
+<h3>CSS</h3>
+<p>
+    There is no CSS required for <strong>imgin</strong> to run.  However, adding CSS styles can make the experience
+    much smoother.  For example, using CSS transitions to fade the loaded images in can be a nice touch.
+</p>
+<div class="code-wrapper">
+{% highlight css linenos %}
+/* Unloaded images */
+img[data-imginloaded="false"] { 
+    opacity: 0; 
+}
+/* Loaded images */
+img[data-imginloaded="true"] { 
+    opacity: 1; 
+    transition: opacity 1s; 
+}
+{% endhighlight %}
+</div>
+
+
+<h3>Data attributes</h3>
+<p>
+    Upon initialization, all lazy-loadable images are given an attribute <code>data-imginloaded</code>.  Initially,
+    this attribute is set to <code>false</code>.  When an image is loaded, the attribute is changed to <code>true</code>.
+    This attribute makes for an easy way to target images via CSS or jQuery.
+</p>
+
+
+<h3>Return value</h3>
+<p>
+    Calling <code>imgin()</code> returns an <strong>object</strong> which includes the public methods (see below).
+</p>
+
+
+
+
+
+<h2>The options object</h2>
+<p>
+The options object can set any of the following properties:
+</p>
+
+<table summary="Options object properties">
+<thead>
+    <tr>
+        <th width="50" scope="col">Property</th>
+        <th width="100" scope="col">Default</th>
+        <th scope="col">Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>offset</td>
+        <td>0</td>
+        <td>
+        	The offset in pixels outside the viewport (or inside with negative number) at which to begin lazy loading an image.
+        	E.g. a value of 100 would trigger loading on images once they got within 100px of the viewport.  
+        </td>
+    </tr>
+    <tr>
+        <td>lag</td>
+        <td>200</td>
+        <td>
+        	The delay (in milliseconds) to wait after the scroll event finishes before triggering a load cycle.
+        	If you find you are having performance problems (due to <strong>lots</strong> of images for example), 
+        	you can increase this number to improve performance.
+        </td>
+    </tr>
+    <tr>
+        <td>attr</td>
+        <td>data-imginsrc</td>
+        <td>
+        	The attribute on the image tag that will mark the image as lazy-loadable and will store the image path.
+        	Unless you have a good reason to change this, it is suggested that you leave the default.  Note that,
+        	for performance reasons, once an image is loaded, this attribute is removed and that image is removed 
+        	and <strong>imgin</strong> no longer recognizes that image as lazy-loadable.
+        </td>
+    </tr>
+    <tr>
+        <td>onload</td>
+        <td>null</td>
+        <td>
+        	<p>
+        	Callback function fired for each image when it finishes loading.  The function passes a jQuery reference
+        	to the loaded image as its single parameter.
+        	</p>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+
+
+<h2>Public methods</h2>
+
+<p>
+<strong>imgin</strong> exposes public methods which are returned as an object to the <code>imgin()</code> function call.
+To utilize the public methods, simply capture the return in a variable and call the public methods as methods of that variable.
+</p>
+
+<div class="code-wrapper">
+{% highlight javascript linenos %}
+// Example of calling a public method
+$(document).ready(function() {
+    var myImgs = imgin();
+    myImgs.force();
+});
+{% endhighlight %}
+</div>
+
+
+<h3>.refresh()</h3>
+<p>
+	The <code>refresh()</code> method refreshes the array of lazy-loadable images that <strong>imgin</strong> stores
+	internally.  This is useful if you are dynamically adding more lazy-loadable images to the DOM.  Calling
+	<code>refresh()</code> will ensure that <strong>imgin</strong> is aware of these images.
+</p>
+
+
+<h3>.force()</h3>
+<p>
+	The <code>force()</code> method forces all lazy-loadable images that have not been loaded to load immediately rather
+	than waiting for them to enter the viewport.  This only affects images that are currently recognized as lazy-loadable
+	by <strong>imgin</strong>.  If you want to add new images to the DOM and force load them, make sure you call
+	<code>refresh()</code> first.
+</p>

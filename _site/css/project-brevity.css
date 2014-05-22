@@ -1,0 +1,10 @@
+/** 
+ * Project specific CSS for brevity.js
+ */
+ 
+abbr, .abbr-sample { 
+	background-color: #369; 
+	color: #fff; 
+	padding: 3px 5px; 
+	cursor: help; 
+}

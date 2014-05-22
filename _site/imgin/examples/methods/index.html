@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="ponysmith.github.io" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax.css" />
+	
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-imgin.css" />
+	
+
+	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	
+    <title>imgin | Public Methods | ponysmith.github.io</title>
+</head>
+
+<body id="imgin">
+
+<div id="header-wrapper">
+    <header id="header-content">
+        <h1><a href="/">ponysmith.<strong>github</strong>.io</a></h1>
+		
+		<input type="checkbox" id="nav-toggle-input" />
+	    <label for="nav-toggle-input" id="nav-toggle-label">Toggle mobile navigation</label>
+	    <nav id="nav">
+	    	<ul>
+	    		<li id="nav-brevity">
+	    			<a class="nav-link" href="/brevity">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">brevity</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-imgin">
+	    			<a class="nav-link" href="/imgin">
+    					<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">imgin</span>
+	    			</a>
+    			</li>
+	    		<li id="nav-updown">
+	    			<a class="nav-link" href="/updown">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">updown</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-pinnd">
+	    			<a class="nav-link" href="/pinnd">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">pinnd</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-shyft">
+	    			<a class="nav-link" href="/shyft">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">shyft</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    </nav>
+    </header>
+</div>
+
+
+
+<div id="page-wrapper">
+    <section id="page-content">
+        <div id="sidebar-wrapper">
+	<input type="checkbox" id="sidebar-toggle-input" />
+	<label for="sidebar-toggle-input" id="sidebar-toggle-label">Project Menu</label>
+	<aside class="sidebar">
+	
+			<nav>
+<ul class="sidebar-nav">
+    <li><a href="/imgin">Documentation</a></li>
+    <li><a href="/imgin/examples/basic">Basic Usage</a></li>
+    <li><a href="/imgin/examples/callbacks">Callback functions</a></li>
+    <li><a href="/imgin/examples/methods">Public methods</a></li>
+</ul>
+</nav>
+		
+	</aside>
+</div>
+        <h1><a href="/imgin">imgin</a> &rsaquo; <span class="sub">Public Methods</span></h1>
+        <p>
+	The example below uses the public methods <code>force()</code> and <code>refresh()</code>. 
+</p>
+<ul>
+    <li>
+        The <strong>Add images</strong> button will dynamically add new lazy-loadable images to the DOM
+    </li>
+    <li>
+        The <strong>refresh()</strong> button will update the internal array of lazy-loadable images and trigger a load cycle
+    </li>
+    <li>
+        The <strong>force()</strong> button will automatically load any unloaded images.  This only works for images that 
+        are in <strong>imgin</strong>'s interal array.  If you've just added new images via the <strong>Add images</strong>
+        button, you'll need to <code>refresh()</code> before you can <code>force()</code>.
+    </li>    
+</ul>
+
+<p>
+<a id="add" class="button">Add images</a>
+<a id="refresh" class="button">refresh()</a>
+<a id="force" class="button">force()</a>
+</p>
+
+
+<h2>Example</h2>
+<div id="imgs">   
+    <div class="img"><img data-imginsrc="/images/imgin/lg-1.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-2.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-3.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-4.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-5.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-6.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-7.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-8.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-9.jpg" /></div>
+</div>
+
+
+<h2>Code for this example</h2>
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// Initialize imgin and store the return object</span>
+<span class="lineno"> 2</span>     <span class="c1">// Adding a negative offset so you can see part of the unloaded image before it loads</span>
+<span class="lineno"> 3</span>     <span class="kd">var</span> <span class="nx">I</span> <span class="o">=</span> <span class="nx">imgin</span><span class="p">({</span> <span class="nx">offset</span><span class="o">:</span> <span class="o">-</span><span class="mi">100</span> <span class="p">});</span>
+<span class="lineno"> 4</span>     <span class="c1">// Just a little counter for adding images</span>
+<span class="lineno"> 5</span>     <span class="nx">imgnum</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>     <span class="c1">// Wire up the buttons</span>
+<span class="lineno"> 8</span>     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#force&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="nx">I</span><span class="p">.</span><span class="nx">force</span><span class="p">();</span>
+<span class="lineno">10</span>     <span class="p">});</span>
+<span class="lineno">11</span>     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#refresh&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>         <span class="nx">I</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
+<span class="lineno">13</span>     <span class="p">});</span>
+<span class="lineno">14</span>     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#add&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>         <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>             <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#imgs&#39;</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span> <span class="o">+</span> <span class="s1">&#39;&lt;div class=&quot;img&quot;&gt;&lt;img data-imginsrc=&quot;/images/imgin/lg-&#39;</span> <span class="o">+</span> <span class="nx">imgnum</span> <span class="o">+</span> <span class="s1">&#39;.jpg&quot; /&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
+<span class="lineno">17</span>             <span class="nx">imgnum</span><span class="o">++</span>
+<span class="lineno">18</span>         <span class="p">}</span>
+<span class="lineno">19</span>         <span class="k">if</span><span class="p">(</span><span class="nx">imgnum</span> <span class="o">&gt;</span> <span class="mi">18</span><span class="p">)</span> <span class="nx">imgnum</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">20</span>     <span class="p">});</span>
+</code></pre></div>
+
+<script>
+var imgin_example = 'callbacks'; 
+
+function imgin_callbacks() {
+
+    // Initialize imgin and store the return object
+    // Adding a negative offset so you can see part of the unloaded image before it loads
+	var I = imgin({ offset: -200 });
+    // Just a little counter for adding images
+    imgnum = 10;
+
+    // Wire up the buttons
+    $('#force').on('click', function(e) {
+        I.force();
+    });
+
+    $('#refresh').on('click', function(e) {
+        I.refresh();
+    });
+
+    $('#add').on('click', function(e) {
+        for(i=0; i<3; i++) {
+            $('#imgs').prepend("\n" + '<div class="img"><img data-imginsrc="/images/imgin/lg-' + imgnum + '.jpg" /></div>');
+            imgnum++
+        }
+        if(imgnum > 18) imgnum = 1;
+    });
+
+}
+</script>
+
+    </section>
+</div>
+
+<div id="footer-wrapper">
+	<hr />
+    <footer id="footer-content">
+		<div id="footer-github">
+			<a href="/">https://github.com/ponysmith</a>
+		</div>
+    </footer>
+</div>
+
+
+</body>
+
+
+	
+
+
+</html>

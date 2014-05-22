@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="ponysmith.github.io" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax.css" />
+	
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-updown.css" />
+
+
+	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	
+    <title>updown | Basic Usage | ponysmith.github.io</title>
+</head>
+
+<body id="updown">
+
+<div id="header-wrapper">
+    <header id="header-content">
+        <h1><a href="/">ponysmith.<strong>github</strong>.io</a></h1>
+		
+		<input type="checkbox" id="nav-toggle-input" />
+	    <label for="nav-toggle-input" id="nav-toggle-label">Toggle mobile navigation</label>
+	    <nav id="nav">
+	    	<ul>
+	    		<li id="nav-brevity">
+	    			<a class="nav-link" href="/brevity">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">brevity</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-imgin">
+	    			<a class="nav-link" href="/imgin">
+    					<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">imgin</span>
+	    			</a>
+    			</li>
+	    		<li id="nav-updown">
+	    			<a class="nav-link" href="/updown">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">updown</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-pinnd">
+	    			<a class="nav-link" href="/pinnd">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">pinnd</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-shyft">
+	    			<a class="nav-link" href="/shyft">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">shyft</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    </nav>
+    </header>
+</div>
+
+
+
+<div id="page-wrapper">
+    <section id="page-content">
+        <div id="sidebar-wrapper">
+	<input type="checkbox" id="sidebar-toggle-input" />
+	<label for="sidebar-toggle-input" id="sidebar-toggle-label">Project Menu</label>
+	<aside class="sidebar">
+	
+			<nav>
+<ul class="sidebar-nav">
+    <li><a href="/updown">Documentation</a></li>
+    <li><a href="/updown/examples/basic">Basic Usage</a></li>
+</ul>
+</nav>
+	
+	</aside>
+</div>
+        <h1><a href="/updown">updown</a> &rsaquo; <span class="sub">Basic Usage</span></h1>
+        <p>
+Below is a very simple example that illustrates the custom events fired by <strong>updown</strong>.  Resize your
+window past any of the breakpoints listed in the table and watch the appropriate events get fired.
+</p>
+
+
+<h2>Example</h2>
+
+<table summary="Data on updown events" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col" colspan="2">Resize / Event data</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row" width="100">Breakpoints</th>
+            <td id="data-breakpoints"></td>
+        </tr>
+        <tr>
+            <th scope="row" width="100">Current width</th>
+            <td id="data-width"></td>
+        </tr>
+        <tr>
+            <th scope="row" width="100">Triggered events</th>
+            <td id="data-events"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Code for this example</h2>
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// Add a custom breakpoint</span>
+<span class="lineno"> 2</span>     <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">breakpoints</span><span class="o">:</span> <span class="p">[</span><span class="mi">640</span><span class="p">]</span> <span class="p">};</span>
+<span class="lineno"> 3</span>     <span class="kd">var</span> <span class="nx">ud</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">updown</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="c1">// Dynamically create the event markers based on the registered breakpoints returned by updown()</span>
+<span class="lineno"> 6</span>     <span class="kd">var</span> <span class="nx">trigger_list</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#data-events&#39;</span><span class="p">);</span>
+<span class="lineno"> 7</span>     <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">ud</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;updown-trigger&quot; id=&quot;trigger-&#39;</span> <span class="o">+</span> <span class="nx">ud</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;-down&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">ud</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.down&#39;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="nx">trigger_list</span><span class="p">);</span>
+<span class="lineno"> 9</span>         <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;updown-trigger&quot; id=&quot;trigger-&#39;</span> <span class="o">+</span> <span class="nx">ud</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;-up&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">ud</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.up&#39;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="nx">trigger_list</span><span class="p">);</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span>     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#data-breakpoints&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">ud</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">));</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>     <span class="c1">// Bind our custom events</span>
+<span class="lineno">14</span>     <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">on</span><span class="p">({</span>
+<span class="lineno">15</span>         <span class="c1">// 320</span>
+<span class="lineno">16</span>         <span class="s1">&#39;320.up&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-320-up&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">17</span>         <span class="s1">&#39;320.down&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-320-down&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">18</span>         <span class="c1">// 480 </span>
+<span class="lineno">19</span>         <span class="s1">&#39;480.up&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-480-up&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">20</span>         <span class="s1">&#39;480.down&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-480-down&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">21</span>         <span class="c1">// 640 </span>
+<span class="lineno">22</span>         <span class="s1">&#39;640.up&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-640-up&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">23</span>         <span class="s1">&#39;640.down&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-640-down&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">24</span>         <span class="c1">// 768 </span>
+<span class="lineno">25</span>         <span class="s1">&#39;768.up&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-768-up&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">26</span>         <span class="s1">&#39;768.down&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-768-down&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">27</span>         <span class="c1">// 960 </span>
+<span class="lineno">28</span>         <span class="s1">&#39;940.up&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-940-up&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">29</span>         <span class="s1">&#39;940.down&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-940-down&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">30</span>         <span class="c1">// 1024</span>
+<span class="lineno">31</span>         <span class="s1">&#39;1024.up&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-1024-up&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">32</span>         <span class="s1">&#39;1024.down&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-1024-down&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">33</span>         <span class="c1">// 1280 </span>
+<span class="lineno">34</span>         <span class="s1">&#39;1280.up&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-1280-up&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">35</span>         <span class="s1">&#39;1280.down&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#trigger-1280-down&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">)</span> <span class="p">},</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span>         <span class="c1">// Generic resize events </span>
+<span class="lineno">38</span>         <span class="nx">resize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">39</span>             <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#data-width&#39;</span><span class="p">).</span><span class="nx">empty</span><span class="p">().</span><span class="nx">html</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">);</span>
+<span class="lineno">40</span>             <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.updown-triggered&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;updown-triggered&#39;</span><span class="p">);</span>
+<span class="lineno">41</span>         <span class="p">}</span>
+<span class="lineno">42</span>     <span class="p">});</span>
+<span class="lineno">43</span> 
+<span class="lineno">44</span>     <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+
+
+
+<script>
+var updown_example = 'basic'; 
+
+function updown_basic() {
+    var options = { breakpoints: [640] };
+    var ud = new updown(options);
+
+    var trigger_list = $('#data-events');
+    for(i=0; i<ud.length; i++) {
+        $('<div class="updown-trigger" id="trigger-' + ud[i] + '-down"></div>').html(ud[i] + '.down').appendTo(trigger_list);
+        $('<div class="updown-trigger" id="trigger-' + ud[i] + '-up"></div>').html(ud[i] + '.up').appendTo(trigger_list);
+    }
+
+    $('#data-breakpoints').html(ud.join(', '));
+
+    $(window).on({
+        // 320
+        '320.up': function() { $('#trigger-320-up').addClass('updown-triggered') },
+        '320.down': function() { $('#trigger-320-down').addClass('updown-triggered') },
+        // 480 
+        '480.up': function() { $('#trigger-480-up').addClass('updown-triggered') },
+        '480.down': function() { $('#trigger-480-down').addClass('updown-triggered') },
+        // 640 
+        '640.up': function() { $('#trigger-640-up').addClass('updown-triggered') },
+        '640.down': function() { $('#trigger-640-down').addClass('updown-triggered') },
+        // 768 
+        '768.up': function() { $('#trigger-768-up').addClass('updown-triggered') },
+        '768.down': function() { $('#trigger-768-down').addClass('updown-triggered') },
+        // 960 
+        '940.up': function() { $('#trigger-940-up').addClass('updown-triggered') },
+        '940.down': function() { $('#trigger-940-down').addClass('updown-triggered') },
+        // 1024
+        '1024.up': function() { $('#trigger-1024-up').addClass('updown-triggered') },
+        '1024.down': function() { $('#trigger-1024-down').addClass('updown-triggered') },
+        // 1280 
+        '1280.up': function() { $('#trigger-1280-up').addClass('updown-triggered') },
+        '1280.down': function() { $('#trigger-1280-down').addClass('updown-triggered') },
+
+        // Generic resize events 
+        resize: function() {
+            $('#data-width').empty().html($(this).width() + 'px');
+            $('.updown-triggered').removeClass('updown-triggered');
+        }
+    });
+
+    $(window).trigger('resize');
+}
+</script>
+
+    </section>
+</div>
+
+<div id="footer-wrapper">
+	<hr />
+    <footer id="footer-content">
+		<div id="footer-github">
+			<a href="/">https://github.com/ponysmith</a>
+		</div>
+    </footer>
+</div>
+
+
+</body>
+
+
+
+
+
+</html>

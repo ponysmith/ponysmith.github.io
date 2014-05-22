@@ -1,4 +1,44 @@
 /* =========================================================================== */
+/* Fonts
+/* =========================================================================== */
+@font-face {
+    font-family: 'exoextralight';
+    src: url('../fonts/exo/exo-extralight-webfont.eot');
+    src: url('../fonts/exo/exo-extralight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/exo/exo-extralight-webfont.woff') format('woff'),
+         url('../fonts/exo/exo-extralight-webfont.ttf') format('truetype'),
+         url('../fonts/exo/exo-extralight-webfont.svg#exoextralight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'exoregular';
+    src: url('../fonts/exo/exo-regular-webfont.eot');
+    src: url('../fonts/exo/exo-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/exo/exo-regular-webfont.woff') format('woff'),
+         url('../fonts/exo/exo-regular-webfont.ttf') format('truetype'),
+         url('../fonts/exo/exo-regular-webfont.svg#exoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'exodemibold';
+    src: url('../fonts/exo/exo-semibold-webfont.eot');
+    src: url('../fonts/exo/exo-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/exo/exo-semibold-webfont.woff') format('woff'),
+         url('../fonts/exo/exo-semibold-webfont.ttf') format('truetype'),
+         url('../fonts/exo/exo-semibold-webfont.svg#exodemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* =========================================================================== */
 /* Reset
 /* =========================================================================== */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}/* HTML5 display-role reset for older browsers */article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
@@ -9,7 +49,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 /* =========================================================================== */
 html {
     min-height: 100%;
-    background-color: #efefef;
+    background-color: #fff;
     color: #555;
 }
 body {
@@ -17,44 +57,56 @@ body {
     font-size: 14px;
     font-family: "Myriad Pro", "Trebuchet MS", sans-serif;
     line-height: 18px;
+    margin-top: 40px;
 }
 p {
-   line-height: 18px;
-   margin: 0 0 24px; 
+   margin: 0 0 18px; 
 }
 a:link,
 a:visited,
 a:hover,
 a:active {
-    text-decoration: none;
+    text-decoration: underline;
     outline: none;
     color: #0069aa;
 }
 
 /* Headers */
+strong {
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
 h1 {
-    color: #1a7fda;
-    text-transform: uppercase;
-    font-size: 26px;    
-    font-weight: 400;
+    font: normal 26px/34px exodemibold, "Trebuchet MS", sans-serif;
+    color: #0069aa;
+    text-transform: lowercase;
     margin: 40px 0 20px;
-    line-height: 1.3em;
+}
+h1 .sub {
+    font: normal 26px/34px exoextralight, "Trebuchet MS", sans-serif;
+    color: #888;
+}
+#page-content h1:first-of-type {
+    margin-top: 0;
 }
 h2 {
     display: block;
-    color: #3f4444;
-    font-size: 24px;    
-    font-weight: 400;
-    margin: 30px 0 10px;
-    line-height: 1.3em;
+    color: #444;
+    font: normal 20px/28px exoregular, "Trebuchet MS", sans-serif;
+    margin: 40px 0 10px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #0069aa;
 }
 h3 {
     display: block;
-    color: #3f4444;
-    font-size: 20px;    
-    font-weight: 400;
-    margin: 30px 0 5px;
-    line-height: 1.3em;
+    color: #0069aa;
+    font: normal 14px/20px exoextralight, "Trebuchet MS", sans-serif;
+    margin: 30px 0 10px;
+    border-left: 5px solid #0069aa;
+    padding: 5px 10px;
+    background-color: #d3e4f0;
 }
 h4 {
     font-size: 14px;
@@ -70,9 +122,11 @@ ul, ol {
 }
 ul li {
     list-style: disc;
+    margin-bottom: 6px;
 }
 ol li {
     list-style: decimal;
+    margin-bottom: 6px;
 }
 ul ul,
 ul ol,
@@ -81,11 +135,110 @@ ol ul {
     margin: 18px 0 18px 24px;
 }
 
-/* Horizontal Rules */
-hr { height: 0; border-top: 1px solid #999; margin: 30px 0; }
-hr.double { height: 4px; border-bottom: 1px solid #999; }
-hr.diagonal { border: none; height: 10px; background: transparent url(../images/ui/pattern-diag-gray.png); }
 
+/* Tables */
+table {
+    border: none;
+    width: 100%;
+}
+thead th {
+    background-color: #ddd;
+    color: #666;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+thead th, thead td {
+    border-bottom: 3px solid #999;
+}
+tbody th {
+    font-weight: bold;
+    text-align: right;
+}
+th, td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+/* Code */
+code {
+    font: bold 11px monospace;
+    background-color: #efefef;
+    vertical-align: text-bottom;
+    color: #666;
+    line-height: 1em;
+    display: inline-block;
+    padding: 2px 5px;
+    border: 1px solid #bbb;
+    max-width: 100%;
+}
+.highlight {
+    margin: 20px 0; 
+    background: #e4e4e4 url(../images/diag-bg.png);
+    padding: 20px;
+}
+pre {
+    margin: 0;
+    display: block;
+    background-color: #efefef;
+    padding: 15px;
+    color: #555;
+    border: 1px solid #ccc;
+    overflow: auto;
+}
+pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    font: inherit;
+    border: none;
+    line-height: 1.7em;
+}
+
+
+/* Horizontal Rules */
+hr { border: none; height: 10px; background: #ddd url(../images/diag-bg.png); }
+
+
+/* Messages */
+div[class*=msg-] { 
+    margin: 20px 0; 
+    background: transparent url(../images/diag-bg.png);
+    padding: 20px;
+}
+div.msg-warn { background-color: #ee8600; color: #ee8600; }
+div.msg-warn .msgcontent { border: 1px solid #ee8600; }
+div.msg-info { background-color: #afdfee; color: #148cee; }
+div.msg-info .msgcontent { border: 1px solid #148cee; }
+
+.msgcontent {
+    background-color: #fff;
+    padding: 20px;
+}
+.msgcontent p:last-of-type {
+    margin: 0;
+}
+
+
+/* =========================================================================== */
+/* Buttons
+/* =========================================================================== */
+.button { 
+    background-color: #1086c6; 
+    color: #fff; 
+    padding: 10px 15px; 
+    text-decoration: none; 
+    display: inline-block; 
+    margin-right: 10px; 
+    cursor: pointer;
+}
+.button:hover,
+.button:focus {
+    color: #fff;
+    background-color: #0a699e;
+    text-decoration: none;
+}
 
 
 /* =========================================================================== */
@@ -94,6 +247,12 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
 #header-wrapper {
     width: 100%;
     background-color: #333;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
 }
 #header-content {
     max-width: 960px;
@@ -101,15 +260,19 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
     position: relative;
 }
 #header-content h1 {
-    padding: 0 10px 0 60px;
+    padding: 0 10px 0 50px;
     margin: 0;
     color: #aaa;
     font-weight: normal;
+    font-size: 20px;
     text-transform: none;
     display: inline-block;
     width: 300px;
-    line-height: 50px;
-    vertical-align: middle;
+    line-height: 40px;
+}
+#header-content h1 a {
+    text-decoration: none;
+    color: #89BC40;
 }
 #header-content h1 a:hover,
 #header-content h1 a:focus {
@@ -134,6 +297,7 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
 #nav {
     display: none;
     background-color: #222;
+    vertical-align: top;
 }
 #nav ul {
     margin: 0;
@@ -141,25 +305,56 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
     font-size: 0;
 }
 #nav li {
-    font-size: 13px;
     list-style: none;
-    display: inline-block;
-}
-#nav a {
-    text-transform: uppercase;
     display: block;
-    padding: 15px 15px;
-    line-height: 20px;
-    height: 20px;
     vertical-align: middle;
-    color: #aaa;
-    background-color: transparent;
+    margin: 0;
 }
-#nav a:hover,
-#nav a:focus {
+#nav a.nav-link {
     color: #fff;
-    background-color: #0069aa;
+    height: 40px;
 }
+#nav .nav-link-icon {
+    vertical-align: middle;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: transparent url(../images/nav-icons.png) no-repeat 0 0;
+}
+#nav .nav-link-text {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 10px 5px;
+    font: normal 11px exodemibold, "Trebuchet MS", sans-serif;
+    text-transform: uppercase;
+}
+#nav a.nav-link:hover,
+#nav a.nav-link:focus {
+    width: 150px;
+    transition: width: .5s;
+    background-color: #111;
+}
+#nav-brevity .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat 0 0; }
+#nav-imgin .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -40px 0; }
+#nav-updown .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -80px 0; }
+#nav-pinnd .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -120px 0; }
+#nav-shyft .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -160px 0; }
+
+#brevity #nav-brevity a.nav-link,
+#pinnd #nav-pinnd a.nav-link,
+#updown #nav-updown a.nav-link,
+#shyft #nav-shyft a.nav-link,
+#imgin #nav-imgin a.nav-link {
+    width: 150px;
+    color: #89BC40;
+    background-color: #111;
+}
+
+
+/* =========================================================================== */
+/* Mobile nav toggle
+/* =========================================================================== */
 #nav-toggle-label {
     position: absolute;
     top: 0;
@@ -167,9 +362,9 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
     font-size: 0;
     height: 30px;
     width: 30px;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
-    background: transparent url(../images/nav-toggle.png) no-repeat 10px 10px;
+    background: transparent url(../images/sprites.png) no-repeat 0px -40px;
 }
 #nav-toggle-label:hover,
 #nav-toggle-label:focus {
@@ -198,6 +393,112 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
         display: inline-block;
         background-color: transparent;
     }
+    #nav li {
+        display: inline-block;
+    }
+    #nav .nav-link {
+        width: 40px;
+        display: inline-block;
+        overflow: hidden;
+        transition: width .5s;
+    }
+}
+
+
+
+/* =========================================================================== */
+/* Sidebar
+/* =========================================================================== */
+#sidebar-wrapper {
+    padding: 0px;
+    margin: 0 0 20px;
+}
+.sidebar {
+    display: none;
+}
+.sidebar h2 {
+    color: #888;
+    border: none;
+    font-size: 20px;
+    margin: 10px 0 5px;
+}
+.sidebar h2:first-of-type {
+    margin: 0;
+}
+.sidebar-nav {
+    margin: 0;
+    padding: 0;
+}
+.sidebar-nav li {
+    list-style: none;
+    margin: 0;
+}
+.sidebar-nav a {
+    display: block;
+    text-decoration: none;
+    color: #888;
+    padding: 7px 10px;
+}
+.sidebar-nav a:before {
+    content: '';
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border: 5px solid transparent;
+    border-left-color: #888;
+    margin: 0 3px;
+}
+.sidebar-nav a:hover,
+.sidebar-nav a:focus {
+    background-color: #efefef;
+}
+
+
+/* =========================================================================== */
+/* Sidebar toggle
+/* =========================================================================== */
+#sidebar-toggle-label {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+#sidebar-toggle-label:before {
+    content: '';
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    vertical-align: bottom;
+    background: transparent url(../images/sprites.png) no-repeat -40px -40px;
+}
+#sidebar-toggle-input {
+    position: absolute;
+    left: -99999px;
+}
+@media only screen and (max-width: 768px) {
+    #sidebar-toggle-input:checked ~ #sidebar-toggle-label:before {
+        background: transparent url(../images/sprites.png) no-repeat -80px -40px;
+    }
+    #sidebar-toggle-input:checked ~ .sidebar {
+        display: block;
+    }    
+}
+/* 768 */
+@media only screen and (min-width: 768px) {
+    #sidebar-toggle-label {
+        display: none;
+        left: -99999px;
+    }
+    #sidebar-wrapper {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        width: 230px;
+        padding-left: 30px;
+    }
+    .sidebar {
+        display: block;
+    }
 }
 
 
@@ -207,13 +508,35 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
 /* =========================================================================== */
 #page-wrapper {
     width: 100%;
-    background-color: #efefef;
 }
 #page-content {
-    max-width: 940px;
-    padding: 20px 10px;
+    position: relative;
+    max-width: 680px;
+    padding: 20px 260px 20px 10px;
     margin: 0 auto;
     color: #666;
+    line-height: 24px;
+}
+/* 768 */
+@media only screen and (max-width: 768px) {
+    #page-content {
+        max-width: 960px;
+        padding: 20px 10px;
+    }
+}
+
+
+
+/* =========================================================================== */
+/* SVG
+/* =========================================================================== */
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: middle;
+    overflow: hidden;
 }
 
 
@@ -222,11 +545,37 @@ hr.diagonal { border: none; height: 10px; background: transparent url(../images/
 /* Footer
 /* =========================================================================== */
 #footer-wrapper {
+    margin-top: 100px;
+    background-color: #333;
 }
 #footer-content {
     max-width: 940px;
-    padding: 20px 10px;
+    padding: 50px 10px;
     margin: 0 auto;
+}
+#footer-github {
+    text-align: center;
+    padding: 20px 0;
+}
+#footer-github a {
+    color: #666;
+    font: normal 20px/20px "exoextralight", "Trebuchet MS", sans-serif;
+    letter-spacing: 3px;
+    text-decoration: none;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+#footer-github a:before {
+    content: '';
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    margin-right: 12px;
+    position: relative;
+    top: -3px;
+    background: transparent url(../images/sprites.png) no-repeat -120px -40px;
+    vertical-align: middle;
 }
 
 

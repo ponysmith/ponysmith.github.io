@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="ponysmith.github.io" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax.css" />
+	
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-brevity.css" />
+	
+
+	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	
+    <title>brevity | Namespacing | ponysmith.github.io</title>
+</head>
+
+<body id="brevity">
+
+<div id="header-wrapper">
+    <header id="header-content">
+        <h1><a href="/">ponysmith.<strong>github</strong>.io</a></h1>
+		
+		<input type="checkbox" id="nav-toggle-input" />
+	    <label for="nav-toggle-input" id="nav-toggle-label">Toggle mobile navigation</label>
+	    <nav id="nav">
+	    	<ul>
+	    		<li id="nav-brevity">
+	    			<a class="nav-link" href="/brevity">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">brevity</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-imgin">
+	    			<a class="nav-link" href="/imgin">
+    					<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">imgin</span>
+	    			</a>
+    			</li>
+	    		<li id="nav-updown">
+	    			<a class="nav-link" href="/updown">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">updown</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-pinnd">
+	    			<a class="nav-link" href="/pinnd">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">pinnd</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-shyft">
+	    			<a class="nav-link" href="/shyft">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">shyft</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    </nav>
+    </header>
+</div>
+
+
+
+<div id="page-wrapper">
+    <section id="page-content">
+        <div id="sidebar-wrapper">
+	<input type="checkbox" id="sidebar-toggle-input" />
+	<label for="sidebar-toggle-input" id="sidebar-toggle-label">Project Menu</label>
+	<aside class="sidebar">
+	
+			<nav>
+<ul class="sidebar-nav">
+    <li><a href="/brevity">Documentation</a></li>
+    <li><a href="/brevity/examples/basic">Basic Usage</a></li>
+    <li><a href="/brevity/examples/namespace">Namespacing</a></li>
+    <li><a href="/brevity/examples/rootnode">Using Root Node</a></li>
+</ul>
+</nav>
+		
+	</aside>
+</div>
+        <h1><a href="/brevity">brevity</a> &rsaquo; <span class="sub">Namespacing</span></h1>
+        <p>
+Namespacing in brevity.js allows you to register multiple abbreviations with the 
+same abbreviation text.  This can come in handy on the off chance you have
+two identical abbreviations that have different meanings.
+</p>
+
+<p>  
+Namespaces in brevity.js work by using a colon (<code>:</code>) to add a namespace before the actual abbreviation.  
+When brevity.js parses the abbreviation, everything to the left of the final colon will be considered a namespace and will
+be used for disambiguation purposes only.  Everything to the right of the final colon is what will be printed out by brevity.js
+as the text for that <code>abbr</code> tag.
+</p>
+<p>
+For example, let's say you were using the abbrevation WWF for two purposes:
+</p>
+<ol>
+<li>World Wrestling Federation</li>
+<li>World Wildlife Fund</li>
+</ol>
+<p>
+In this case, you could namespace these abbrevations in the abbrevations array of your JS like so:
+</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="kd">var</span> <span class="nx">abbrs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno">2</span>     <span class="p">{</span> <span class="nx">abbr</span><span class="o">:</span> <span class="s1">&#39;Pandas:WWF&#39;</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;World Wildlife Fund&#39;</span> <span class="p">},</span>
+<span class="lineno">3</span>     <span class="p">{</span> <span class="nx">abbr</span><span class="o">:</span> <span class="s1">&#39;HulkHogan:WWF&#39;</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;World Wrestling Federation&#39;</span> <span class="p">}</span>
+<span class="lineno">4</span> <span class="p">];</span>
+</code></pre></div>
+
+
+<p>
+Then, in your HTML, you would simply type out the appropriate abbreviation (with namespace) and brevity.js will correctly
+convert it.  Check out the sample code below to see it in action.
+</p>
+
+
+
+<h2>Code</h2>
+
+<h3>Sample HTML</h3>
+<div class="code-wrapper">
+<div class="highlight"><pre><code class="html"><span class="c">&lt;!-- sample HTML --&gt;</span>
+<span class="nt">&lt;p&gt;</span>Due to his love of pandas, Hulk Hogan (of HulkHogan:WWF fame) held a fundraiser for the Pandas:WWF.<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>
+</div>
+
+
+<h3>Sample Javascript</h3>
+<div class="code-wrapper">
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// sample JS</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">abbrs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno">3</span>     <span class="p">{</span> <span class="nx">abbr</span><span class="o">:</span> <span class="s1">&#39;Pandas:WWF&#39;</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;World Wildlife Fund&#39;</span> <span class="p">},</span>
+<span class="lineno">4</span>     <span class="p">{</span> <span class="nx">abbr</span><span class="o">:</span> <span class="s1">&#39;HulkHogan:WWF&#39;</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;World Wrestling Federation&#39;</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="p">];</span>
+<span class="lineno">6</span> <span class="nx">brevity</span><span class="p">(</span><span class="nx">abbrs</span><span class="p">);</span>
+</code></pre></div>
+</div>
+
+
+<h2>Result</h2>
+<!-- sample HTML -->
+<div id="abbr-result" class="msg-info">
+    <div class="msgcontent">
+    Due to his love of pandas, Hulk Hogan (of HulkHogan:WWF fame) held a fundraiser for the Pandas:WWF.
+    </div>
+</div>
+
+
+<h2>Another use for namespacing</h2>
+
+<p>
+Another potential use for the namespacing capabilities of brevity.js is to have more control over when 
+abbreviations get parsed.  For example, let's say you want brevity.js to handle the term HTML, but you
+only want it to be abbreviated the first time it appears on the page.  You might be able to use the
+<a href="/brevity/examples/rootnode">root node option</a> to accomplish this.  But you could also use namespacing. All
+you would need to do is add a namespace (for example, <code>convert</code>).  Then,
+any time you want brevity to handle the abbreviation, you would type <code>convert:HTML</code> and anytime
+you want the text to appear unchanged, you would simply type <code>HTML</code>.  Easy peesy.
+</p>
+
+
+<script>
+var brevity_example = 'namespace';
+function brevity_namespace() {
+    // brevity namespace example
+    var abbrs = [
+        { abbr: 'Pandas:WWF', title: 'World Wildlife Fund' },
+        { abbr: 'HulkHogan:WWF', title: 'World Wrestling Federation' }
+    ];
+    // I know, I know ... this doesn't match the JS in the example code above
+    // I'm adding the root option here so that only the result html is converted
+    // Otherwise, all the abbreviations in the sample code would be converted as well, and that would just be weird
+    var opts = { 'root': document.getElementById('abbr-result') };
+    brevity(abbrs, opts);
+}
+</script>
+
+    </section>
+</div>
+
+<div id="footer-wrapper">
+	<hr />
+    <footer id="footer-content">
+		<div id="footer-github">
+			<a href="/">https://github.com/ponysmith</a>
+		</div>
+    </footer>
+</div>
+
+
+</body>
+
+
+	
+
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="ponysmith.github.io" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax.css" />
+	
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-imgin.css" />
+	
+
+	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	
+    <title>imgin | Basic Usage | ponysmith.github.io</title>
+</head>
+
+<body id="imgin">
+
+<div id="header-wrapper">
+    <header id="header-content">
+        <h1><a href="/">ponysmith.<strong>github</strong>.io</a></h1>
+		
+		<input type="checkbox" id="nav-toggle-input" />
+	    <label for="nav-toggle-input" id="nav-toggle-label">Toggle mobile navigation</label>
+	    <nav id="nav">
+	    	<ul>
+	    		<li id="nav-brevity">
+	    			<a class="nav-link" href="/brevity">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">brevity</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-imgin">
+	    			<a class="nav-link" href="/imgin">
+    					<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">imgin</span>
+	    			</a>
+    			</li>
+	    		<li id="nav-updown">
+	    			<a class="nav-link" href="/updown">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">updown</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-pinnd">
+	    			<a class="nav-link" href="/pinnd">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">pinnd</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-shyft">
+	    			<a class="nav-link" href="/shyft">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">shyft</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    </nav>
+    </header>
+</div>
+
+
+
+<div id="page-wrapper">
+    <section id="page-content">
+        <div id="sidebar-wrapper">
+	<input type="checkbox" id="sidebar-toggle-input" />
+	<label for="sidebar-toggle-input" id="sidebar-toggle-label">Project Menu</label>
+	<aside class="sidebar">
+	
+			<nav>
+<ul class="sidebar-nav">
+    <li><a href="/imgin">Documentation</a></li>
+    <li><a href="/imgin/examples/basic">Basic Usage</a></li>
+    <li><a href="/imgin/examples/callbacks">Callback functions</a></li>
+    <li><a href="/imgin/examples/methods">Public methods</a></li>
+</ul>
+</nav>
+		
+	</aside>
+</div>
+        <h1><a href="/imgin">imgin</a> &rsaquo; <span class="sub">Basic Usage</span></h1>
+        <p>
+Below is a very simple example of <strong>imgin</strong>.  The images
+are very large images (250k - 1.5Mb) scaled down via CSS to showcase the page load improvements.  Scroll
+down the page to see the images load.
+</p>
+
+
+<h2>Example</h2>
+<div id="imgs">   
+    <div class="img"><img data-imginsrc="/images/imgin/lg-1.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-2.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-3.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-4.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-5.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-6.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-7.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-8.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-9.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-10.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-11.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-12.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-13.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-14.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-15.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-16.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-17.jpg" /></div>
+    <div class="img"><img data-imginsrc="/images/imgin/lg-18.jpg" /></div>
+</div>
+
+
+<h2>Code for this example</h2>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Call imgin with default options</span>
+<span class="lineno">2</span> <span class="nx">imgin</span><span class="p">();</span>
+</code></pre></div>
+
+<script>
+var imgin_example = 'basic'; 
+
+function imgin_basic() {
+    imgin();
+}
+</script>
+
+    </section>
+</div>
+
+<div id="footer-wrapper">
+	<hr />
+    <footer id="footer-content">
+		<div id="footer-github">
+			<a href="/">https://github.com/ponysmith</a>
+		</div>
+    </footer>
+</div>
+
+
+</body>
+
+
+	
+
+
+</html>

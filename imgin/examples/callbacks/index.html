@@ -1,0 +1,64 @@
+---
+layout: default
+title: Callbacks
+project: imgin
+---
+
+
+<p>
+	The example below uses the <code>onload</code> callback function to add a loaded message to the image containers.
+</p>
+<p>
+	Since the callback function passes a jQuery reference to the loaded image, you can do anything you would normally
+	do in jQuery.  However, be aware that some operations (like editing styles) might be more efficient to do in CSS
+	via the <code>data-imginloaded</code> attribute.  See the CSS section on the 
+	<a href="{{ site.baseurl }}imgin">documentation</a> page.
+</p>
+
+
+<h2>Example</h2>
+<div id="imgs">   
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-1.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-2.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-3.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-4.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-5.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-6.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-7.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-8.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-9.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-10.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-11.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-12.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-13.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-14.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-15.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-16.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-17.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/imgin/lg-18.jpg" /></div>
+</div>
+
+
+<h2>Code for this example</h2>
+{% highlight javascript linenos %}
+// Set a callback function to add a message
+var opts = {
+	onload: function(img) {
+		img.parent().append('<div class="onload">Loaded!</div>');
+	}
+}
+imgin(opts);
+{% endhighlight %}
+
+<script>
+var imgin_example = 'callbacks'; 
+
+function imgin_callbacks() {
+	var opts = {
+		onload: function(img) {
+			img.parent().append('<div class="onload">Loaded!</div>');
+		}
+	}
+	imgin(opts);
+}
+</script>

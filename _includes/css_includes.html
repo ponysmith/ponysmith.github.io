@@ -1,0 +1,10 @@
+{% case page.project %}
+	{% when 'brevity' %}
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-brevity.css" />
+	{% when 'imgin' %}
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-imgin.css" />
+	{% when 'pinnd' %}
+	{% when 'shyft' %}
+	{% when 'updown' %}
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-updown.css" />
+{% endcase %}

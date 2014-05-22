@@ -1,0 +1,87 @@
+---
+layout: default
+title: Using Root Node
+project: brevity
+---
+
+
+<p>
+    The root node option for brevity.js exists as a way to limit the scope of the abbreviations you want automatically converted.
+    Everything inside the root node will be parsed and checked for registered abbreviations.  If no root node is set, brevity.js
+    will use the <code>body</code> node by default.  This will be sufficient for most cases.  However, if you have a very complex 
+    HTML document, it might be worth utilizing the root node option.  For example, you could limit the script to just the content area
+    of the page in order to skip the header, navigation, footer, etc.
+</p>
+<p>
+    To make use of the root node option, simply pass an options object into the <code>brevity()</code> function as the second 
+    parameter.  Within the options object, set a property called <code>root</code> and assign the desired node as its value.
+    See the example below for a working sample.
+</p>
+<div class="msg-warn">
+    <div class="msgcontent">
+    <p>
+        brevity.js is vanilla javascript, not a jQuery plugin.  Passing a jQuery selected object in as the root node <strong>will not work</strong>.  You must pass an actual DOM node (for example, by using <code>document.getElementById()</code>.
+    </p>
+    <p>
+        If you want to use jQuery, just make sure you are passing the node and not the jQuery object.
+        E.g: <code>var root = $('#my-element').get(0);</code>
+    </p>
+    </div>
+</div>
+
+
+<h2>Code</h2>
+
+<h3>Sample HTML</h3>
+
+<div class="code-wrapper">
+{% highlight html linenos %}
+<div id="my-root-id">
+    <p>This text is within the root node, so HTML will be abbreviated.</p>
+</div>
+<div>
+    <p>This text is <strong>NOT</strong> within the root node, so HTML will not be abbreviated.</p>
+</div>
+{% endhighlight %}
+</div>
+
+<h3>Sample Javascript</h3>
+<div class="code-wrapper">
+{% highlight javascript linenos %}
+var abbrs = [
+    { abbr: 'HTML', title: 'Hypertext Markup Language' }
+];
+var options = { 'root': document.getElementById('my-root-id') };
+brevity(abbrs, options);
+{% endhighlight %}
+</div>
+
+
+<h2>Result</h2>
+<!-- sample HTML -->
+<div id="abbr-result" class="msg-info">
+    <div class="msgcontent">
+        <div id="my-root-id">
+            <p>This text is within the root node, so HTML will be abbreviated.</p>
+        </div>
+        <div>
+            <p>This text is <strong>NOT</strong> within the root node, so HTML will not be abbreviated.</p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+var brevity_example = 'rootnode';
+function brevity_rootnode() {
+    // brevity rootnode example
+    var abbrs = [
+        { abbr: 'HTML', title: 'Hypertext Markup Language' }
+    ];
+    // I know, I know ... this doesn't match the JS in the example code above
+    // I'm adding the root option here so that only the result html is converted
+    // Otherwise, all the abbreviations in the sample code would be converted as well, and that would just be weird
+    var opts = { 'root': document.getElementById('my-root-id') };
+    brevity(abbrs, opts);
+}
+</script>
