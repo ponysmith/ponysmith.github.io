@@ -6,6 +6,220 @@ project: pinnd
 
 
 <p>
-<strong>pinnd.js</strong> is a javascript plugin for pinning content to the browser window when scrolling.
+<strong>pinnd.js</strong> is a javascript plugin pinning content relative to the viewport when scrolling. 
+The plugin focuses heavily on performance while still offering a lot of very useful functionality.
 </p>
 
+
+<h2>Dependencies</h2>
+<strong>pinnd.js</strong> requires jQuery 1.7+ to run.</p>
+
+
+<h2>Usage</h2>
+<p>
+Once you have included the <strong>pinnd.js</strong> file in your page, 
+you can initialize the plugin by calling the <code>pinnd()</code> function. The <code>pinnd()</code>
+function takes two parameters:
+</p>
+<ul>
+    <li>
+        <strong>obj</strong> (required):<br />
+        jQuery object(s) that you want the plugin to manipulate
+    </li>
+    <li>
+        <strong>options</strong> (optional)<br />
+        Options object.  See below for available options
+    </li>
+</ul>
+<p>
+While not a traditional jQuery plugin, <strong>pinnd</strong> does rely on jQuery, so make sure you're calling
+the <code>pinnd()</code> function within your <code>$(document).ready()</code> block.
+</p>
+
+<div class="code-wrapper">
+{% highlight javascript linenos %}
+// Sample JS
+$(document).ready(function() {
+    // Select object(s)
+    var obj = $('.my-objects');
+    var opts = {
+        offset: 20
+    }
+	pinnd(obj, opts);
+});
+{% endhighlight %}
+</div>
+
+
+<h3>Return value</h3>
+<p>
+Calling <code>pinnd()</code> returns an <strong>object</strong> which can be used to access
+the public methods (see below).
+</p>
+
+
+
+<h2>The options object</h2>
+<p>
+The options object can set any of the following properties:
+</p>
+
+<table summary="Options object properties">
+<thead>
+    <tr>
+        <th width="30" scope="col">Property</th>
+        <th width="30" scope="col">Type</th>
+        <th width="70" scope="col">Default</th>
+        <th scope="col">Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>context</td>
+        <td>string</td>
+        <td>body</td>
+        <td>
+        	jQuery compatible selector string for the context object that you want the pinned element to be restrained to.
+        	By default, pinned objects are constrained to the body element.
+        </td>
+    </tr>
+    <tr>
+        <td>autoenable</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>
+            Set to <code>false</code> to prevent the plugin from enabling as part of the initialization process.  If you 
+            set this to false, you will need to manually enable the pinning behavior via the <code>on()</code> 
+            <a href="{{ site.baseurl}}pinnd/examples/methods">public method</a>
+        </td>
+    </tr>
+    <tr>
+        <td>offset_top</td>
+        <td>int</td>
+        <td>0</td>
+        <td>
+            Pixel offset to pin the element from the top of the window.
+        </td>
+    </tr>
+    <tr>
+        <td>offset_bottom</td>
+        <td>int</td>
+        <td>0</td>
+        <td>
+            Pixel offset to pin the element from the top of the bottom of the context element.
+        </td>
+    </tr>
+    <tr>
+        <td>zindex</td>
+        <td>int</td>
+        <td>5</td>
+        <td>
+        	CSS <code>z-index</code> value you would like applied to the elements when in a pinned state
+        </td>
+    </tr>
+    <tr>
+        <td>onpintop</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        Callback function triggered when the element is pinned to the top of the viewport/context element.  Passes
+        a jQuery reference to the pinned object as its single argument.
+        </td>
+    </tr>
+    <tr>
+        <td>onpinbottom</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        Callback function triggered when the element is pinned to the bottom of the viewport/context element.  Passes
+        a jQuery reference to the pinned object as its single argument.
+        </td>
+    </tr>
+    <tr>
+        <td>onunpin</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        Callback function triggered when the element is unpinned from the viewport/context element.  Passes
+        a jQuery reference to the pinned object as its single argument.
+        </td>
+    </tr>
+</tbody>
+</table>
+
+
+<h2>CSS Classes</h2>
+<p>
+<strong>pinnd</strong> adds several CSS classes to pinnable elements depending on their state.  This makes the elements
+easy to target elsewhere in your scripts or in CSS.  Classes are added when the elements enter the associated state
+and are automatically removed when they exit the associated state.
+</p>
+
+<table summary="Pinnd CSS classes">
+<thead>
+    <tr>
+        <th width="100" scope="col">CSS Class</th>
+        <th scope="col">Applied when</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>.pinnd</td>
+        <td>
+        	Applied when an element enters a pinned state (either to the top or the bottom of the context element)    
+        </td>
+    </tr>
+    <tr>
+        <td>.pinnd-top</td>
+        <td>
+        	Applied when an element enters a pinned state at the top of the context element   
+        </td>
+    </tr>
+    <tr>
+        <td>.pinnd-bottom</td>
+        <td>
+        	Applied when an element enters a pinned state at the bottom of the context element   
+        </td>
+    </tr>
+</tbody>
+</table>
+
+
+<h2>Public methods</h2>
+
+<p>
+<strong>pinnd</strong> exposes public methods which are returned as an object to the <code>pinnd()</code> function call.
+To utilize the public methods, simply capture the return in a variable and call the public methods as methods of that variable.
+</p>
+
+<div class="code-wrapper">
+{% highlight javascript linenos %}
+// Example of calling a public method
+$(document).ready(function() {
+    var myPinnd = pinnd($('.mypinnd'));
+    myPinnd.enable();
+});
+{% endhighlight %}
+</div>
+
+
+<h3>.disable()</h3>
+<p>
+	The <code>disable()</code> method disables pinning for the associated elements.  Note that if elements are currently
+	in a pinned state, calling <code>disable()</code> will return them to their original positions.
+</p>
+
+
+<h3>.enable()</h3>
+<p>
+	The <code>enable()</code> method enables pinning for the associated elements.  Note that calling <coee>enable()</code>
+	will automatically pin any necessary elements.
+</p>
+
+<div class="msg-warn">
+	<div class="msgcontent">
+	Both the <code>enable()</code> and <code>disable()</code> methods only affect their associated elements.  This means
+	that if you have created multiple sets of pinnable elements (to give them different options for example), calling
+	one of the public methods will only affect the set of elements associated with the public method you are calling.
+	</div>
+</div>

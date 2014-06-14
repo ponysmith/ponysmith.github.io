@@ -4,15 +4,45 @@
 require.config({
     paths: {
         jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min',
-        // brevity: 'https://rawgit.com/ponysmith/brevity/master/brevity.min',
-        // updown: 'https://rawgit.com/ponysmith/updown/master/updown.min',
-        // imgin: 'https://rawgit.com/ponysmith/imgin/master/imgin.min',
     }
 });
 
 
-// Check if there are examples to run
-// If there are, require the appropriate library and call the appropriate function (from js/project-<project>.js)
+
+
+/** 
+ * Global
+ */
+require(['jquery', 'libs/pinnd.min', 'libs/updown.min'], function($, pinnd, updown) {
+
+	// Initialize updown
+	updown();
+
+	// Pin the sidebar
+	var pinSidebarOpts = {
+		offset_top: 70,
+	}
+	var pinSidebar = pinnd($('.sidebar'), pinSidebarOpts);
+	
+	// If we are below 768 width, disable pinning
+	if($(window).width() < 768) pinSidebar.off();
+	
+	// Dynamically enable/disable pinning based on 768 breakpoint
+	$(window).on('768.down', function() { pinSidebar.off() });
+	$(window).on('768.up', function() { pinSidebar.on() });
+
+});
+
+
+
+
+
+
+
+
+/** 
+ * Examples
+ */
 
 // homepage
 if(window.isHomepage) {
@@ -49,6 +79,19 @@ if(window.imgin_example) {
 		switch(window.imgin_example) {
 			case 'basic': imgin_basic(); break;
 			case 'callbacks': imgin_callbacks(); break;
+			default: break;
+		}
+	});
+}
+
+// pinnd examples
+if(window.pinnd_example) {
+	require(['libs/pinnd.min'], function(pinnd) {
+		switch(window.pinnd_example) {
+			case 'basic': pinnd_basic(); break;
+			case 'context': pinnd_context(); break;
+			case 'callbacks': pinnd_callbacks(); break;
+			case 'methods': pinnd_methods(); break;
 			default: break;
 		}
 	});
