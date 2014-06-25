@@ -12,7 +12,7 @@
 	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-imgin.css" />
 	
 
-	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	<script data-main="/js/main.js" src="/js/libs/require.min.js"></script>
 	
     <title>imgin | Documentation | ponysmith.github.io</title>
 </head>
@@ -74,9 +74,13 @@
 			<nav>
 <ul class="sidebar-nav">
     <li><a href="/imgin">Documentation</a></li>
-    <li><a href="/imgin/examples/basic">Basic Usage</a></li>
-    <li><a href="/imgin/examples/callbacks">Callback functions</a></li>
-    <li><a href="/imgin/examples/methods">Public methods</a></li>
+    <li>Examples
+    	<ul>
+		    <li><a href="/imgin/examples/basic">Basic Usage</a></li>
+		    <li><a href="/imgin/examples/callbacks">Callback functions</a></li>
+		    <li><a href="/imgin/examples/methods">Public methods</a></li>
+		</ul>
+	</li>
 </ul>
 </nav>
 		
@@ -106,7 +110,7 @@ By default, this attribute is <code>data-imginsrc</code>, but can be changed via
 is initialized.  This attribute must exist on any image you want <strong>imgin</strong> to lazy load and the value of the
 attribute should be the path to the image (just as you would write it in a normal image <code>src</code> attribute). 
 </p>
-<div class="msg-warn">
+<div class="msg-info">
     <div class="msgcontent">
         There are two important things to note about the HTML:
         <ol>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="ponysmith.github.io" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax.css" />
+	
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/libs/shyft.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-shyft.css" />
+	
+
+	<script data-main="/js/main.js" src="/js/libs/require.min.js"></script>
+	
+    <title>shyft | Documentation | ponysmith.github.io</title>
+</head>
+
+<body id="shyft">
+
+<div id="header-wrapper">
+    <header id="header-content">
+        <h1><a href="/">ponysmith.<strong>github</strong>.io</a></h1>
+		
+		<input type="checkbox" id="nav-toggle-input" />
+	    <label for="nav-toggle-input" id="nav-toggle-label">Toggle mobile navigation</label>
+	    <nav id="nav">
+	    	<ul>
+	    		<li id="nav-brevity">
+	    			<a class="nav-link" href="/brevity">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">brevity</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-imgin">
+	    			<a class="nav-link" href="/imgin">
+    					<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">imgin</span>
+	    			</a>
+    			</li>
+	    		<li id="nav-updown">
+	    			<a class="nav-link" href="/updown">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">updown</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-pinnd">
+	    			<a class="nav-link" href="/pinnd">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">pinnd</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-shyft">
+	    			<a class="nav-link" href="/shyft">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">shyft</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    </nav>
+    </header>
+</div>
+
+
+
+<div id="page-wrapper">
+    <section id="page-content">
+        <div id="sidebar-wrapper">
+	<input type="checkbox" id="sidebar-toggle-input" />
+	<label for="sidebar-toggle-input" id="sidebar-toggle-label">Project Menu</label>
+	<aside class="sidebar">
+	
+			<nav>
+<ul class="sidebar-nav">
+    <li><a href="/shyft">Documentation</a></li>
+    <li><a href="/shyft/options">Options</a></li>
+    <li><a href="/shyft/autoplay">Autoplay Statuses</a></li>
+    <li><a href="/shyft/callbacks">Callbacks</a></li>
+    <li><a href="/shyft/methods">Public Methods</a></li>
+    <li>Examples
+    	<ul>
+		    <li><a href="/shyft/examples/basic">Basic Usage</a></li>
+            <li><a href="/shyft/examples/options">Options Sandbox</a></li>
+            <li><a href="/shyft/examples/custom-ui">Custom UI</a></li>
+            <li><a href="/shyft/examples/add-remove">Adding / Removing</a></li>
+		</ul>
+	</li>
+</ul>
+</nav>
+		
+	</aside>
+</div>
+        <h1><a href="/shyft">shyft</a> &rsaquo; <span class="sub">Documentation</span></h1>
+        
+
+
+
+<h2>Setting Options</h2>
+<p>
+To make <strong>shyft</strong> as versatile as possible, there are multiple sources for defining options.
+From highest to lowest priority, they are:
+</p>
+<ol>
+    <li>Setting options via HTML <code>data</code> attributes</li>
+    <li>Setting options via the options object passed into the JS constructor</li>
+    <li>Default options as set in the plugin itself</li>
+</ol>
+<p>
+The available options can be found in the table below.
+</p>
+
+
+<h3>Setting options via the data attribute</h3>
+<p>
+To set options via <code>data</code> attributes, add HTML attribute(s) to the wrapper element 
+(the one you'll pass into the constructor). Data attributes should take the form of 
+<code>data-shyft-&lt;option_name&gt;</code>.
+</p>
+<p>
+Note that you <strong>cannot</strong> set 
+callback functions using this method.  Callback functions can only be defined via the options
+object.
+</p>
+<div class="highlight"><pre><code class="html"><span class="lineno">1</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;myshyft&quot;</span> <span class="na">data-shyftautoplay=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">2</span>     <span class="c">&lt;!-- items here --&gt;</span>
+<span class="lineno">3</span> <span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+
+
+
+<h3>The options object</h3>
+<p>
+The options object is a plain JSON object that can set any of the following properties:
+</p>
+
+<table summary="Options object properties">
+<thead>
+    <tr>
+        <th width="30" scope="col">Property</th>
+        <th width="30" scope="col">Type</th>
+        <th width="70" scope="col">Default</th>
+        <th scope="col">Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>numtoshow</td>
+        <td>int</td>
+        <td>1</td>
+        <td>
+            Number of slides to show at one time
+        </td>
+    </tr>
+    <tr>
+        <td>numtoscroll</td>
+        <td>int</td>
+        <td>1</td>
+        <td>
+            Number of slides to scroll when changing to next or previous
+        </td>
+    </tr>
+    <tr>
+        <td>offset</td>
+        <td>int</td>
+        <td>1</td>
+        <td>
+            Initial slide to show (beginning with 1)
+        </td>
+    </tr>
+    <tr>
+        <td>loop</td>
+        <td>bool</td>
+        <td>true</td>
+        <td>
+            Allow looping between first and last slides
+        </td>
+    </tr>
+    <tr>
+        <td>autoplay</td>
+        <td>bool</td>
+        <td>false</td>
+        <td>
+            Automatically play the slideshow
+        </td>
+    </tr>
+    <tr>
+        <td>hoverpause</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>
+            When slideshow is playing, pause the slideshow when the user hovers the mouse over the carousel
+        </td>
+    </tr>
+    <tr>
+        <td>delay</td>
+        <td>int</td>
+        <td>5000</td>
+        <td>
+            Delay in milliseconds before changing slides when slideshow is playing
+        </td>
+    </tr>
+    <tr>
+        <td>transition</td>
+        <td>string</td>
+        <td>800</td>
+        <td>
+            Time in milliseconds for the transition between slides
+        </td>
+    </tr>
+    <tr>
+        <td>prev</td>
+        <td>bool</td>
+        <td>true</td>
+        <td>
+        	Show the previous link
+        </td>
+    </tr>
+    <tr>
+        <td>next</td>
+        <td>bool</td>
+        <td>true</td>
+        <td>
+        	Show the next link
+        </td>
+    </tr>
+    <tr>
+        <td>nav</td>
+        <td>bool</td>
+        <td>true</td>
+        <td>
+            Enable the navigation/pagination links
+        </td>
+    </tr>
+    <tr>
+        <td>prevhtml</td>
+        <td>string</td>
+        <td>&lsaquo;</td>
+        <td>
+        	Custom HTML for the previous link
+        </td>
+    </tr>
+    <tr>
+        <td>nexthtml</td>
+        <td>string</td>
+        <td>&rsaquo;</td>
+        <td>
+        	Custom HTML for the next link
+        </td>
+    </tr>
+    <tr>
+        <td>navhtml</td>
+        <td>string</td>
+        <td>{{i}}</td>
+        <td>
+            Custom HTML to be used for all navigation links.  If not provided, defaults to the number of the current slide.
+            If you want to use custom HTML and want the slide # you can use <code>{{i}}</code> in your string and it will be replaced with the slide #.
+        </td>
+    </tr>
+    <tr>
+        <td>prevanim</td>
+        <td>string</td>
+        <td>slide</td>
+        <td>
+        	Animation to use for changing to the previous slide. 
+        </td>
+    </tr>
+    <tr>
+        <td>nextanim</td>
+        <td>string</td>
+        <td>slide</td>
+        <td>
+        	Animation to use for changing to the next slide. 
+        </td>
+    </tr>
+    <tr>
+        <td>changeanim</td>
+        <td>string</td>
+        <td>fade</td>
+        <td>
+        	Animation to use for changing to an arbitrary slide.
+        </td>
+    </tr>
+    <tr>
+        <td>easing</td>
+        <td>string</td>
+        <td>easeOutExpo</td>
+        <td>
+            Easing function. 'easeOutExpo' is defined as part of <strong>shyft.js</strong> plugin.  
+            To use other easing functions you must define them manually or include an easing library like the one in jQuery UI
+        </td>
+    </tr>
+    <tr>
+        <td>onload</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+            Function to call when the carousel finishes loading. <br />         
+        </td>
+    </tr>
+    <tr>
+        <td>onupdate</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+            Function to call when the carousel is updated with new options. <br />         
+        </td>
+    </tr>
+    <tr>
+        <td>ondestroy</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+            Function to call when the carousel is destroyed. <br />         
+        </td>
+    </tr>
+    <tr>
+        <td>onadd</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+            Function to call when a new slide is added to the carousel. <br />         
+        </td>
+    </tr>
+    <tr>
+        <td>onremove</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+            Function to call when a slide is removed from the carousel. <br />         
+        </td>
+    </tr>
+    <tr>
+        <td>onprechange</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        	Function to call before a slide change. <br />        	
+        </td>
+    </tr>
+    <tr>
+        <td>onpostchange</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        	Function to call after a slide change. <br />        	
+        </td>
+    </tr>    
+    <tr>
+        <td>onplay</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        	Function to call when autoplay status changes to <strong>play</strong>. <br />
+        </td>
+    </tr>
+    <tr>
+        <td>onpause</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        	Function to call when autoplay status changes to <strong>pause</strong>. <br />
+        </td>
+    </tr>
+    <tr>
+        <td>onstart</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        	Function to call when autoplay is started. <br />
+        </td>
+    </tr>
+    <tr>
+        <td>onstop</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+        	Function to call when autoplay is stopped. <br />
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Example options object</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="nx">autoplay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">4</span>     <span class="nx">onload</span><span class="o">:</span> <span class="kd">function</span> <span class="p">{</span>
+<span class="lineno">5</span>         <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;loaded&#39;</span><span class="p">);</span>
+<span class="lineno">6</span>     <span class="p">}</span>
+<span class="lineno">7</span> <span class="p">}</span>
+</code></pre></div>
+
+
+
+
+    </section>
+</div>
+
+<div id="footer-wrapper">
+	<hr />
+    <footer id="footer-content">
+		<div id="footer-github">
+			<a href="/">https://github.com/ponysmith</a>
+		</div>
+    </footer>
+</div>
+
+
+</body>
+
+</html>

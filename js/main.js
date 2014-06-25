@@ -3,7 +3,7 @@
  */
 require.config({
     paths: {
-        jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min',
+        jquery: '/js/libs/jquery-1.11.1.min',
     }
 });
 
@@ -20,7 +20,7 @@ require(['jquery', 'libs/pinnd.min', 'libs/updown.min'], function($, pinnd, updo
 
 	// Pin the sidebar
 	var pinSidebarOpts = {
-		offset_top: 70,
+		offset_top: 80,
 	}
 	var pinSidebar = pinnd($('.sidebar'), pinSidebarOpts);
 	
@@ -46,9 +46,7 @@ require(['jquery', 'libs/pinnd.min', 'libs/updown.min'], function($, pinnd, updo
 
 // homepage
 if(window.isHomepage) {
-	require(['libs/skrollr'], function(skrollr){
-	    var s = skrollr.init();
-	});
+
 }
 
 // brevity examples
@@ -92,6 +90,19 @@ if(window.pinnd_example) {
 			case 'context': pinnd_context(); break;
 			case 'callbacks': pinnd_callbacks(); break;
 			case 'methods': pinnd_methods(); break;
+			default: break;
+		}
+	});
+}
+
+// shyft examples
+if(window.shyft_example) {
+	require(['libs/shyft', 'libs/imgin.min'], function(shyft) {
+		imgin();
+		switch(window.shyft_example) {
+			case 'basic': shyft_basic(); break;
+			case 'options': shyft_options(); break;
+			case 'callbacks-methods': shyft_callbacks_methods(); break;
 			default: break;
 		}
 	});

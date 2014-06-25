@@ -10,17 +10,19 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/homepage.css" />
 
     <script>window.isHomepage = true;</script>
-	<script data-main="{{ site.baseurl }}js/main.js" src="{{ site.baseurl }}js/libs/require.js"></script>
+	<script data-main="{{ site.baseurl }}js/main.js" src="{{ site.baseurl }}js/libs/require.min.js"></script>
 	
     <title>ponysmith.github.io</title>
 </head>
 
-<body>
+<body id="homepage">
 
 {% include header.html %}
 
-<div id="homepage-wrapper">
+<div id="homepage">
+    <div id="homepage-content">
     {{ content }}
+    </div>
 </div>
 
 </body>

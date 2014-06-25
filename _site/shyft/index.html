@@ -9,9 +9,11 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax.css" />
 	
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/libs/shyft.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-shyft.css" />
 	
 
-	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	<script data-main="/js/main.js" src="/js/libs/require.min.js"></script>
 	
     <title>shyft | Documentation | ponysmith.github.io</title>
 </head>
@@ -70,15 +72,156 @@
 	<label for="sidebar-toggle-input" id="sidebar-toggle-label">Project Menu</label>
 	<aside class="sidebar">
 	
+			<nav>
+<ul class="sidebar-nav">
+    <li><a href="/shyft">Documentation</a></li>
+    <li><a href="/shyft/options">Options</a></li>
+    <li><a href="/shyft/autoplay">Autoplay Statuses</a></li>
+    <li><a href="/shyft/callbacks">Callbacks</a></li>
+    <li><a href="/shyft/methods">Public Methods</a></li>
+    <li>Examples
+    	<ul>
+		    <li><a href="/shyft/examples/basic">Basic Usage</a></li>
+            <li><a href="/shyft/examples/options">Options Sandbox</a></li>
+            <li><a href="/shyft/examples/custom-ui">Custom UI</a></li>
+            <li><a href="/shyft/examples/add-remove">Adding / Removing</a></li>
+		</ul>
+	</li>
+</ul>
+</nav>
 		
 	</aside>
 </div>
         <h1><a href="/shyft">shyft</a> &rsaquo; <span class="sub">Documentation</span></h1>
         <p>
-<strong>shyft.js</strong> very lightweight and feature-rich javascript carousel plugin.
+<strong>shyft.js</strong> is a jQuery/Javascript content carousel plugin with a focus on being lightweight, feature-rich and 
+highly customizable.  To that end, <strong>shyft.js</strong> is small (~5kb minified), versatile (AMD-compliant for use with <strong>require.js</strong>),
+and very customizable with a host of options, callbacks and exposed public methods.
 </p>
 
 
+<h2>Dependencies</h2>
+<strong>shyft.js</strong> requires jQuery 1.7+ to run.</p>
+
+
+<h2>HTML structure</h2>
+<p>
+	While very versatile, <strong>shyft</strong> does expect a specific HTML structure.  When initializing the plugin, you will need to pass
+	a jQuery selected object in as a parameter.  This object should be the direct parent element of the elements you would like <strong>shyft</strong>
+	to convert into slides.  Remember, any direct child elements of this wrapping element will be converted to slides, so if you want to add additional
+	HTML (for example to create a custom navigation system for your carousel), you need to place it outside the wrapping element.  For an example, consider
+	the following HTML:
+</p>
+<div class="highlight"><pre><code class="html"><span class="c">&lt;!--</span>
+<span class="c">Here, div#shyft-wrapper is the wrapping element we will pass into the initialization function</span>
+<span class="c">The child elements (div.shyft-slide) will be converted into slides.</span>
+<span class="c">Note the id and classes are not required and are there just for reference</span>
+<span class="c">--&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;shyft-wrapper&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;shyft-item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;shyft-item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;shyft-item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;shyft-item&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+
+<h2>Usage</h2>
+<p>
+Once you have included the <strong>shyft.js</strong> file in your page, 
+you can initialize the plugin by calling the <code>shyft()</code> function. The <code>shyft()</code>
+function takes two parameters:
+</p>
+<ul>
+    <li>
+        <strong>obj</strong> (required):<br />
+        jQuery object(s) that you want the plugin to manipulate
+    </li>
+    <li>
+        <strong>options</strong> (optional)<br />
+        Options object.  For details about available options, see the <a href="/shyft/options">Options page</a>.
+    </li>
+</ul>
+<p>
+While not a traditional jQuery plugin, <strong>shyft</strong> does rely on jQuery, so make sure you're calling
+the <code>shyft()</code> function within your <code>$(document).ready()</code> block.
+</p>
+
+<div class="code-wrapper">
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Sample JS</span>
+<span class="lineno">2</span> <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="c1">// Select object</span>
+<span class="lineno">4</span>     <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#my-object&#39;</span><span class="p">);</span>
+<span class="lineno">5</span>     <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">6</span>         <span class="nx">autoplay</span><span class="o">:</span> <span class="kc">false</span>
+<span class="lineno">7</span>     <span class="p">}</span>
+<span class="lineno">8</span> 	<span class="nx">shyft</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
+<span class="lineno">9</span> <span class="p">});</span>
+</code></pre></div>
+</div>
+
+
+
+
+<h3>Return value</h3>
+<p>
+Calling <code>shyft()</code> returns an <strong>object</strong> which can be used to access
+the public methods (see Public Methods below).
+</p>
+
+
+
+<h2>AMD Compliant</h2>
+<p>
+<strong>shyft.js</strong> is AMD compliant, which means that it can be used out of the box as an AMD module for scripts like <strong>require.js</strong>.
+If you're using <strong>require.js</strong> you can simply load the module like you would any other module:
+</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="nx">require</span><span class="p">([</span><span class="s1">&#39;shyft&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">shyft</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="p">});</span>
+</code></pre></div>
+<p>
+If you're not using <strong>require.js</strong> or some other AMD-backed script loader, don't worry.  The plugin still exposes a global 
+function <code>shyft()</code> that you can use to initialize your carousels.  In fact, all of the code samples in this documentation use that method. 
+Just make sure you're manually including jQuery and calling <code>shyft()</code> within the <code>document.ready</code> block.
+</p> 
+
+
+<h2>Responsive</h2>
+<p>
+<strong>shyft</strong> has responsiveness baked in to the plugin itself.  When the window resizes, <strong>shyft</strong> will automatically
+adjust the width of the carousel items and animations to make sure they stay in sync.  All you have to do is make sure that the wrapper 
+element is responsive in your CSS (using media queries or a max-width).  <strong>shyft</strong> takes care of the rest!
+</p>
+<p>
+If you want some additional control of the responsiveness, <strong>shyft</strong> also has a public method <code>update()</code> that
+you can use to update the carousel with a fresh set of options.  Then all you need to do is call <code>update()</code>
+anytime you pass a breakpoint and need to change the carousel.  Now, if only there was a way to expose breakpoints in Javascript &hellip;
+<em>cough &hellip; check out my <a href="/updown">updown plugin</a> &hellip; cough cough</em>
+</p>
+
+
+
+<h2>CSS and styling</h2>
+<p>
+<strong>shyft</strong> dynamically adds CSS classes to various elements as part of the initialization process.  These classes are used to 
+add necessary styles to the carousel, slides, links, etc.  The core styles are defined in the included CSS file, <strong>shyft.css</strong>.
+Because the styles are defined in CSS, you can modify them however you want in order to create a custom look and feel for your carousel.  Just make sure
+you don't mess around with the core styles (core styles are clearly noted in the CSS).  Altering core styles could affect the functionality 
+of the carousel.
+</p>
+
+
+<h2>Public methods</h2>
+
+<p>
+<strong>shyft</strong> exposes public methods which are returned as an object to the <code>shyft()</code> function call.
+To utilize the public methods, simply capture the return in a variable and call the public methods as methods of that variable.
+</p>
+
+<p>
+For more details on public methods, visit <a href="/shyft/methods">Public Methods page</a>.
+</p>
     </section>
 </div>
 

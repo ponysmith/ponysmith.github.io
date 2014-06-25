@@ -12,7 +12,7 @@
 	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-brevity.css" />
 	
 
-	<script data-main="/js/main.js" src="/js/libs/require.js"></script>
+	<script data-main="/js/main.js" src="/js/libs/require.min.js"></script>
 	
     <title>brevity | Documentation | ponysmith.github.io</title>
 </head>
@@ -74,9 +74,13 @@
 			<nav>
 <ul class="sidebar-nav">
     <li><a href="/brevity">Documentation</a></li>
-    <li><a href="/brevity/examples/basic">Basic Usage</a></li>
-    <li><a href="/brevity/examples/namespace">Namespacing</a></li>
-    <li><a href="/brevity/examples/rootnode">Using Root Node</a></li>
+    <li>Examples:
+    	<ul>
+    		<li><a href="/brevity/examples/basic">Basic Usage</a></li>
+		    <li><a href="/brevity/examples/namespace">Namespacing</a></li>
+		    <li><a href="/brevity/examples/rootnode">Using Root Node</a></li>
+		</ul>
+	</li>
 </ul>
 </nav>
 		
@@ -101,7 +105,7 @@ The function takes two arguments:
     <li>(optional) - An options object </li>
 </ol>
 
-<div class="msg-warn">
+<div class="msg-info">
     <div class="msgcontent">
         Since <strong>brevity</strong> can only modify abbreviations that exist in the DOM, it is best to call the
         <code>brevity()</code> function once the content is ready either via <code>window.onLoad</code> or <code>$(document).ready</code> (if you're using jQuery).
@@ -137,7 +141,7 @@ should contain the following two properties:
 
 <h2>The options object</h2>
 
-<p>As a second, optional, parameter <strong>brevity.js</strong> takes an options object.  The following options can be set:</p>
+<p>As a second, optional, parameter <strong>brevity</strong> takes an options object.  The following options can be set:</p>
 
 <table summary="Required properties in abbreviation objects for brevity.js">
 <thead>

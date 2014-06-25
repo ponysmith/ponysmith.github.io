@@ -10,7 +10,6 @@
          url('../fonts/exo/exo-extralight-webfont.svg#exoextralight') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -22,7 +21,6 @@
          url('../fonts/exo/exo-regular-webfont.svg#exoregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -34,7 +32,6 @@
          url('../fonts/exo/exo-semibold-webfont.svg#exodemibold') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 
@@ -62,12 +59,10 @@ body {
 p {
    margin: 0 0 18px; 
 }
-a:link,
-a:visited,
-a:hover,
-a:active {
+a {
     text-decoration: underline;
     outline: none;
+    cursor: pointer;
     color: #0069aa;
 }
 
@@ -134,6 +129,9 @@ ol ol,
 ol ul {
     margin: 18px 0 18px 24px;
 }
+img {
+    max-width: 100%;
+}
 
 
 /* Tables */
@@ -166,12 +164,15 @@ code {
     font: bold 11px monospace;
     background-color: #efefef;
     vertical-align: text-bottom;
-    color: #666;
+    color: #aa4543;
     line-height: 1em;
     display: inline-block;
     padding: 2px 5px;
     border: 1px solid #bbb;
     max-width: 100%;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
 }
 .highlight {
     margin: 20px 0; 
@@ -183,19 +184,17 @@ pre {
     display: block;
     background-color: #efefef;
     padding: 15px;
-    color: #555;
     border: 1px solid #ccc;
     overflow: auto;
+    font: normal 11px/16px #555 "Andale Mono", monospace;
 }
 pre code {
     background-color: transparent;
     color: inherit;
     padding: 0;
-    font: inherit;
     border: none;
     line-height: 1.7em;
 }
-
 
 /* Horizontal Rules */
 hr { border: none; height: 10px; background: #ddd url(../images/diag-bg.png); }
@@ -207,10 +206,8 @@ div[class*=msg-] {
     background: transparent url(../images/diag-bg.png);
     padding: 20px;
 }
-div.msg-warn { background-color: #ee8600; color: #ee8600; }
-div.msg-warn .msgcontent { border: 1px solid #ee8600; }
-div.msg-info { background-color: #afdfee; color: #148cee; }
-div.msg-info .msgcontent { border: 1px solid #148cee; }
+div.msg-info { background-color: #eeeac7; color: #ab9b55; }
+div.msg-info .msgcontent { border: 1px solid #eed673; }
 
 .msgcontent {
     background-color: #fff;
@@ -309,6 +306,7 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
     display: block;
     vertical-align: middle;
     margin: 0;
+    line-height: 0;
 }
 #nav a.nav-link {
     color: #fff;
@@ -317,15 +315,16 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
 #nav .nav-link-icon {
     vertical-align: middle;
     display: inline-block;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
+    margin: 5px 0 5px 5px;
     background: transparent url(../images/nav-icons.png) no-repeat 0 0;
 }
 #nav .nav-link-text {
     display: inline-block;
     height: 20px;
     line-height: 20px;
-    padding: 10px 5px;
+    padding: 10px;
     font: normal 11px exodemibold, "Trebuchet MS", sans-serif;
     text-transform: uppercase;
 }
@@ -336,10 +335,10 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
     background-color: #111;
 }
 #nav-brevity .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat 0 0; }
-#nav-imgin .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -40px 0; }
-#nav-updown .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -80px 0; }
-#nav-pinnd .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -120px 0; }
-#nav-shyft .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -160px 0; }
+#nav-imgin .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -30px 0; }
+#nav-updown .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -60px 0; }
+#nav-pinnd .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -90px 0; }
+#nav-shyft .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -120px 0; }
 
 #brevity #nav-brevity a.nav-link,
 #pinnd #nav-pinnd a.nav-link,
@@ -347,7 +346,7 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
 #shyft #nav-shyft a.nav-link,
 #imgin #nav-imgin a.nav-link {
     width: 150px;
-    color: #89BC40;
+    color: #fff;
     background-color: #111;
 }
 
@@ -410,8 +409,10 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
 /* Sidebar
 /* =========================================================================== */
 #sidebar-wrapper {
-    padding: 0px;
+    padding: 5px;
     margin: 0 0 20px;
+    background-color: #efefef;
+    border: 1px solid #ccc;
 }
 .sidebar {
     display: none;
@@ -426,20 +427,21 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
     margin: 0;
 }
 .sidebar-nav {
+    padding: 0 0 0 20px;
     margin: 0;
-    padding: 0;
 }
 .sidebar-nav li {
     list-style: none;
-    margin: 0;
+}
+.sidebar-nav ul {
+    margin: 5px 0 0 10px;
 }
 .sidebar-nav a {
     display: block;
-    text-decoration: none;
-    color: #888;
-    padding: 7px 10px;
+    text-transform: none;
+    font-weight: normal;
 }
-.sidebar-nav a:before {
+.sidebar-nav ul a:before {
     content: '';
     display: inline-block;
     height: 0;
@@ -448,10 +450,19 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
     border-left-color: #888;
     margin: 0 3px;
 }
-.sidebar-nav a:hover,
-.sidebar-nav a:focus {
-    background-color: #efefef;
+/* 768 */
+@media only screen and (min-width: 768px) {
+    #sidebar-wrapper {
+        border-color: transparent;
+        background-color: transparent;
+        padding: 0;
+    }
+    #sidebar-nav {
+        padding: 0;
+        background-color: transparent;
+    }
 }
+
 
 
 /* =========================================================================== */
@@ -491,7 +502,7 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
     }
     #sidebar-wrapper {
         position: absolute;
-        top: 30px;
+        top: 40px;
         right: 0;
         width: 230px;
         padding-left: 30px;
@@ -500,6 +511,68 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
         display: block;
     }
 }
+
+
+
+
+
+/* =========================================================================== */
+/* Forms
+/* =========================================================================== */
+.button-row {
+    clear: both;
+    margin-top: 20px;
+}
+.button-group { 
+    display: inline-block; 
+    margin: 15px 0; 
+}
+.button-group a { 
+    cursor: pointer; 
+}
+a.button { 
+    font-size: 12px;
+    display: inline-block; 
+    background-color: #0d85ff; 
+    color: #fff; 
+    text-decoration: none; 
+    padding: 5px 15px; 
+    margin: 0;
+}
+a.button:hover,
+a.button.active { 
+    background-color: #0763c1;
+}
+/* Lightswitches */
+input.lightswitch {
+    position: absolute;
+    left: -9999px;
+}
+input.lightswitch~label {
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+input.lightswitch~label:before {
+    content: '';
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: middle;
+    height: 20px;
+    width: 59px;
+    margin-right: 10px;
+    border: 1px solid #666;
+    background: transparent url(../images/sprites.png) no-repeat top left;
+    -webkit-transition: background-position .2s;
+    -moz-transition: background-position .2s;
+    -o-transition: background-position .2s;
+    -ms-transition: background-position .2s;
+    transition: background-position .2s;
+}
+input.lightswitch.onoff~label:before { background-position: 0 -80px; }
+input.lightswitch.onoff:checked~label:before { background-position: -41px -80px; }
+input.lightswitch.truefalse~label:before { background-position: -100px -80px; }
+input.lightswitch.truefalse:checked~label:before { background-position: -141px -80px; }
 
 
 
@@ -523,20 +596,6 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
         max-width: 960px;
         padding: 20px 10px;
     }
-}
-
-
-
-/* =========================================================================== */
-/* SVG
-/* =========================================================================== */
-.svg-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-    vertical-align: middle;
-    overflow: hidden;
 }
 
 
@@ -577,5 +636,14 @@ div.msg-info .msgcontent { border: 1px solid #148cee; }
     background: transparent url(../images/sprites.png) no-repeat -120px -40px;
     vertical-align: middle;
 }
+
+
+
+/* =========================================================================== */
+/* Utility
+/* =========================================================================== */
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+
 
 

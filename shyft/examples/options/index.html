@@ -1,0 +1,260 @@
+---
+layout: default
+title: Options Sandbox
+project: shyft
+---
+
+{% assign slidevar = '{{i}}' %}
+
+
+<h2>Options Sandbox</h2>
+
+<p>
+This page includes an options form below the carousel that allows you to try out all the options for <strong>shyft</strong>.
+Just set whatever options you want in the options form and click the <strong>UPDATE</strong> button. For detailed descriptions
+of the various options, please visit the <a href="{{ site.baseurl }}shyft/options">Options page</a>.
+</p>
+
+<div id="shyft-example">
+    <img src="{{ site.baseurl }}images/shyft/image-01.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/shyft/image-02.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/shyft/image-03.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/shyft/image-04.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/shyft/image-05.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/shyft/image-06.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/shyft/image-07.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/shyft/image-08.jpg" alt="" width="680" />
+</div>
+
+<h3>Set options</h3>
+<form id="shyft-options">
+	<div class="msg-info">
+		<div class="msgcontent">
+			Some options have had their choices hardcoded here (like <strong>numtoshow</strong>). 
+			This is done to keep the example simple.  In real-world usage, you 
+			could set these values to whatever you want.
+		</div>
+	</div>
+
+	<fieldset class="clearfix">
+		<div class="options-column">
+			<table cellspacing="0" cellpadding="0" summary="Options for shyft">
+				<thead>
+					<tr>
+					<th scope="col">Option</th>
+					<th scope="col">Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><label for="option-offset">offset</label></td>
+						<td>			
+							<select name="offset" id="option-offset">
+								<option value="1" selected="selected">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-numtoshow">numtoshow</label></td>
+						<td>			
+							<select name="numtoshow" id="option-numtoshow">
+								<option value="1" selected="selected">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-numtoscroll">numtoscroll</label></td>
+						<td>			
+							<select name="numtoscroll" id="option-numtoscroll">
+								<option value="1" selected="selected">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-delay">delay</label></td>
+						<td>			
+							<select name="delay" id="option-delay">
+								<option value="500">500</option>
+								<option value="1000">1000</option>
+								<option value="5000" selected="selected">5000</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-transition">transition</label></td>
+						<td>			
+							<select name="transition" id="option-transition">
+								<option value="200">200</option>
+								<option value="800" selected="selected">800</option>
+								<option value="1600">1600</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-prevanim">prevanim</label></td>
+						<td>			
+							<select name="prevanim" id="option-prevanim">
+								<option value="slide" selected="selected">slide</option>
+								<option value="fade">fade</option>
+								<option value="instant">instant</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-nextanim">nextanim</label></td>
+						<td>			
+							<select name="nextanim" id="option-nextanim">
+								<option value="slide" selected="selected">slide</option>
+								<option value="fade">fade</option>
+								<option value="instant">instant</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-changeanim">changeanim</label></td>
+						<td>			
+							<select name="changeanim" id="option-changeanim">
+								<option value="slide">slide</option>
+								<option value="fade" selected="selected">fade</option>
+								<option value="instant">instant</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-prevhtml">prevhtml</label></td>
+						<td>			
+							<select name="prevhtml" id="option-prevhtml">
+								<option value="&lsaquo;" selected="selected">&lsaquo;</option>
+								<option value="prev">prev</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-nexthtml">nexthtml</label></td>
+						<td>			
+							<select name="nexthtml" id="option-nexthtml">
+								<option value="&rsaquo;" selected="selected">&rsaquo;</option>
+								<option value="next">next</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="option-navhtml">navhtml</label></td>
+						<td>			
+							<select name="navhtml" id="option-navhtml">
+								<option value="{{slidevar}}" selected="selected">slide #</option>
+								<option value="&cir;">&cir;</option>
+								<option value="<span>Slide {{slidevar}}</span>"><span>Slide {{slidevar}}</span></option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div class="options-column">
+			<table cellspacing="0" cellpadding="0" summary="Options for shyft">
+				<thead>
+					<tr>
+					<th scope="col">Boolean Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="autoplay" id="option-autoplay" />
+							<label for="option-autoplay">autoplay</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="hoverpause" id="option-hoverpause" checked="checked" />
+							<label for="option-hoverpause">hoverpause</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="loop" id="option-loop" checked="checked" />
+							<label for="option-loop">loop</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="prev" id="option-prev" checked="checked" />
+							<label for="option-prev">prev</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="next" id="option-next" checked="checked" />
+							<label for="option-next">next</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="nav" id="option-nav" checked="checked" />
+							<label for="option-nav">nav</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>	
+		</div>
+	</fieldset>
+
+	<div class="button-row">
+		<a id="update-options" class="button">Update Options</a>
+		<span class="update-msg">Options updated!</span>
+	</div>
+</form>
+
+
+<script>
+var shyft_example = 'options'; 
+
+function shyft_options() {
+	$('.update-msg').hide();
+	var opts = {
+		onupdate: function() {
+			$('.update-msg').show().fadeOut(3000);
+		}
+	}
+	var myshyft = shyft($('#shyft-example'), opts);
+
+	// Update options
+	$('#update-options').on('click', function(e) {
+		var options = {};
+		options.offset = parseInt($('#option-offset').find(':selected').attr('value'));
+		options.numtoshow = parseInt($('#option-numtoshow').find(':selected').attr('value'));
+		options.numtoscroll = parseInt($('#option-numtoscroll').find(':selected').attr('value'));
+		options.delay = parseInt($('#option-delay').find(':selected').attr('value'));
+		options.transition = parseInt($('#option-transition').find(':selected').attr('value'));
+		options.prevanim = $('#option-prevanim').find(':selected').attr('value');
+		options.nextanim = $('#option-nextanim').find(':selected').attr('value');
+		options.changeanim = $('#option-changeanim').find(':selected').attr('value');
+		options.prevhtml = $('#option-prevhtml').find(':selected').attr('value');
+		options.nexthtml = $('#option-nexthtml').find(':selected').attr('value');
+		options.navhtml = $('#option-navhtml').find(':selected').attr('value');
+
+		options.autoplay = ($('#option-autoplay').is(':checked')) ? true : false;
+		options.loop = ($('#option-loop').is(':checked')) ? true : false;
+		options.prev = ($('#option-prev').is(':checked')) ? true : false;
+		options.next = ($('#option-next').is(':checked')) ? true : false;
+		options.nav = ($('#option-nav').is(':checked')) ? true : false;
+
+		console.log(options);
+		myshyft.update(options);
+	});
+}
+</script>

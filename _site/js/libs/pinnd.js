@@ -1,5 +1,6 @@
 /** 
- * pinnd.js Javascript plugin for floating content
+ * pinnd.js 
+ * Javascript plugin for floating content
  * @author Pony Smith - pony@ponysmith.com
  */
 

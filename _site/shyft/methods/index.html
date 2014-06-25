@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="ponysmith.github.io" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/core.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax.css" />
+	
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/libs/shyft.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="/css/project-shyft.css" />
+	
+
+	<script data-main="/js/main.js" src="/js/libs/require.min.js"></script>
+	
+    <title>shyft | Public Methods | ponysmith.github.io</title>
+</head>
+
+<body id="shyft">
+
+<div id="header-wrapper">
+    <header id="header-content">
+        <h1><a href="/">ponysmith.<strong>github</strong>.io</a></h1>
+		
+		<input type="checkbox" id="nav-toggle-input" />
+	    <label for="nav-toggle-input" id="nav-toggle-label">Toggle mobile navigation</label>
+	    <nav id="nav">
+	    	<ul>
+	    		<li id="nav-brevity">
+	    			<a class="nav-link" href="/brevity">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">brevity</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-imgin">
+	    			<a class="nav-link" href="/imgin">
+    					<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">imgin</span>
+	    			</a>
+    			</li>
+	    		<li id="nav-updown">
+	    			<a class="nav-link" href="/updown">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">updown</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-pinnd">
+	    			<a class="nav-link" href="/pinnd">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">pinnd</span>
+	    			</a>
+	    		</li>
+	    		<li id="nav-shyft">
+	    			<a class="nav-link" href="/shyft">
+	    				<span class="nav-link-icon"></span>
+	    				<span class="nav-link-text">shyft</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    </nav>
+    </header>
+</div>
+
+
+
+<div id="page-wrapper">
+    <section id="page-content">
+        <div id="sidebar-wrapper">
+	<input type="checkbox" id="sidebar-toggle-input" />
+	<label for="sidebar-toggle-input" id="sidebar-toggle-label">Project Menu</label>
+	<aside class="sidebar">
+	
+			<nav>
+<ul class="sidebar-nav">
+    <li><a href="/shyft">Documentation</a></li>
+    <li><a href="/shyft/options">Options</a></li>
+    <li><a href="/shyft/autoplay">Autoplay Statuses</a></li>
+    <li><a href="/shyft/callbacks">Callbacks</a></li>
+    <li><a href="/shyft/methods">Public Methods</a></li>
+    <li>Examples
+    	<ul>
+		    <li><a href="/shyft/examples/basic">Basic Usage</a></li>
+            <li><a href="/shyft/examples/options">Options Sandbox</a></li>
+            <li><a href="/shyft/examples/custom-ui">Custom UI</a></li>
+            <li><a href="/shyft/examples/add-remove">Adding / Removing</a></li>
+		</ul>
+	</li>
+</ul>
+</nav>
+		
+	</aside>
+</div>
+        <h1><a href="/shyft">shyft</a> &rsaquo; <span class="sub">Public Methods</span></h1>
+        <h2>Public Methods</h2>
+<p>
+When you instantiate a carousel using <code>shyft()</code>, the function call returns an object which exposes several public methods
+for interacting with and modifying the carousel.  The methods can be called by storing the returned object in a variable and 
+calling the appropriate method from that object.  The available public methods and simple examples can be found below.
+</p>
+
+
+<h3>.change( delta [, anim [, nostop]] )</h3>
+<p>Triggers a slide change.</p>
+
+<h4>Arguments</h4>
+<ul>
+	<li>
+		<strong>delta</strong> (required): The slide to change to.  This can take one of three values:
+		<ul>
+			<li>integer corresponding to the number of the slide you want to change to (beginning with 1, not 0)</li>
+			<li><code>-</code> triggers a change to the previous slide</li>
+			<li><code>+</code> triggers a change to the next slide</li>
+		</ul>
+	</li>
+	<li>
+		<strong>anim</strong> (optional): animation to use for the change.  Defaults to the value of <code>options.changeanim</code>.  
+	</li>
+	<li>
+		<strong>nostop</strong> (optional): By default, when <code>change()</code> is triggered, the slideshow is stopped (if running).  Pass
+		boolean <strong>true</strong> to prevent this behavior.
+	</li>
+</ul>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="c1">// Change to next slide</span>
+<span class="lineno">4</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">);</span>
+<span class="lineno">5</span> <span class="c1">// Change to slide 3, set easing, and prevent stop</span>
+<span class="lineno">6</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;easeOutExpo&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+
+
+
+<h3>.destroy( nocallback )</h3>
+<p>
+	Destroys the <strong>shyft</strong> carousel and returns the DOM to its original state.
+</p>
+<h4>Arguments</h4>
+<ul>
+	<li>
+		<strong>nocallback</strong> (optional): Pass boolean true to prevent the <code>ondestroy</code> callback from firing.  
+		This option is more for internal use, but has been exposed in case you want to take advantage of it
+	</li>
+</ul>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="c1">// Destroy the carousel</span>
+<span class="lineno">4</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+</code></pre></div>
+
+
+
+<h3>.update( options )</h3>
+<p>Destroys and rebuilds the carousel using any new options passed in via the options argument</p>
+<h4>Arguments</h4>
+<ul>
+	<li>
+		<strong>options</strong> (optional): Options object with any options to be updated.
+	</li>
+</ul>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="c1">// Update with new options</span>
+<span class="lineno">4</span> <span class="kd">var</span> <span class="nx">newopts</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">nav</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">autoplay</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">newopts</span><span class="p">);</span>
+</code></pre></div>
+
+
+
+<h3>.add( slide [, index [, focus]] )</h3>
+<p>Adds a new slide to the carousel</p>
+<h4>Arguments</h4>
+<ul>
+	<li><strong>slide</strong> (required): jQuery object corresponding for the slide to be added</li>
+	<li><strong>index</strong> (optional): index (beginning at 1) at which to insert the new slide.  If no index is set, 
+		the new slide will be inserted after the last slide of the current carousel</li>
+	<li><strong>focus</strong> (optional): If set to boolean true, the carousel will change to the new slide once it is inserted. Otherwise,
+		the currently focused slide will retain focus after the slide has been added</li>
+</ul>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="c1">// Create a jquery object for the slide</span>
+<span class="lineno">4</span> <span class="kd">var</span> <span class="nx">slide</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;my/new/image.jpg&quot; /&gt;&#39;</span><span class="p">);</span>
+<span class="lineno">5</span> <span class="c1">// Add the slide to position 3 and focus it immediately</span>
+<span class="lineno">6</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">slide</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+
+
+
+<h3>.remove( index )</h3>
+<p>
+Removes a slide from the carousel. After removing the slide, if there are no remaining slides in the carousel,
+the carousel will automatically be destroyed.  Adding a slide back into the carousel with <code>add()</code>
+will automatically update and rebuild the carousel.
+</p>
+<h4>Arguments</h4>
+<ul>
+	<li><strong>index</strong> (required): index (starting at 1) of the slide to remove</li>
+</ul>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="c1">// Remove the third slide</span>
+<span class="lineno">4</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+
+
+<h3>.play()</h3>
+<p>
+	Resumes playing the slideshow if paused.  Note that <code>play()</code> will only work if the slideshow is paused.  If the slideshow is
+	stopped, you will need to use <code>start()</code> instead.
+</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+</code></pre></div>
+
+
+<h3>.pause()</h3>
+<p>
+	Pauses the slideshow.  This only pauses the slideshow, so it can be restarted with <code>play()</code>.  If you want to stop 
+	the slideshow completely, use <code>stop()</code>
+</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>
+</code></pre></div>
+
+
+<h3>.start()</h3>
+<p>
+	Starts the slideshow.  This is the only way to start the slideshow if it has been stopped.
+</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre></div>
+
+
+<h3>.stop()</h3>
+<p>
+	Completely stops the slideshow. To start the slideshow once it has been stopped, you must use <code>start()</code>.
+</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Store the return object in a variable</span>
+<span class="lineno">2</span> <span class="kd">var</span> <span class="nx">myshyft</span> <span class="o">=</span> <span class="nx">shyft</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myshyft&#39;</span><span class="p">));</span>
+<span class="lineno">3</span> <span class="nx">myshyft</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+</code></pre></div>
+
+    </section>
+</div>
+
+<div id="footer-wrapper">
+	<hr />
+    <footer id="footer-content">
+		<div id="footer-github">
+			<a href="/">https://github.com/ponysmith</a>
+		</div>
+    </footer>
+</div>
+
+
+</body>
+
+</html>
