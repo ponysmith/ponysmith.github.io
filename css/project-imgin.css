@@ -18,6 +18,7 @@ img[data-imginloaded="true"] {
 	position: relative;
 	width: 100%;
 	padding-bottom: 66%;
+	overflow: hidden;
 }
 
 .img img { 
@@ -38,14 +39,16 @@ img[data-imginloaded="true"] {
 		padding-bottom: 33%;
 	}
 }
-/*.img .onload {
+.img .onload {
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	left: 0;
-	padding: 5px 10px;
+	padding: 10px 7px;
 	background-color: #333;
 	color: #fff;
+	font-size: 13px;
+	line-height: 13px;
 }
-*/
+
 
