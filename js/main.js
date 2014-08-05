@@ -76,6 +76,7 @@ if(window.imgin_example) {
 	require(['libs/imgin.min'], function(updown) {
 		switch(window.imgin_example) {
 			case 'basic': imgin_basic(); break;
+			case 'methods': imgin_methods(); break;
 			case 'callbacks': imgin_callbacks(); break;
 			default: break;
 		}

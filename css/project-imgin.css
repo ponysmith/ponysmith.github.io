@@ -9,23 +9,36 @@ img[data-imginloaded="true"] {
 	opacity: 1; 
 	transition: opacity 1s; 
 }
+
+#imgs {
+	font-size: 0px;
+	line-height: 0;
+}
 .img { 
-	display: inline-block; 
-	position: relative; 
-	height: 185px; 
-	width: 185px; 
-	overflow: hidden; 
-	vertical-align: middle; 
-	border: 5px dashed #ccc; 
-	margin: 10px; 
+	position: relative;
+	width: 100%;
+	padding-bottom: 66%;
 }
+
 .img img { 
-	min-width: 200px; 
-	min-height: 200px; 
-	max-width: 230px; 
-	max-height: 230px; 
+	position: absolute; 
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
 }
-.img .onload {
+
+
+@media only screen and (min-width: 960px) {
+	.img { 
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		display: inline-block;
+		width: 50%;
+		padding-bottom: 33%;
+	}
+}
+/*.img .onload {
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -34,5 +47,5 @@ img[data-imginloaded="true"] {
 	background-color: #333;
 	color: #fff;
 }
-
+*/
 
