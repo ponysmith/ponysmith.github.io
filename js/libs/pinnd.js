@@ -1,6 +1,5 @@
 /** 
- * pinnd.js 
- * Javascript plugin for floating content
+ * pinnd.js Javascript plugin for floating content
  * @author Pony Smith - pony@ponysmith.com
  */
 
@@ -34,8 +33,7 @@
 			autoenable: true,
 			context: 'body',
 			offset_top: 0,
-			offset_bottom: 0,
-			zindex: 5
+			offset_bottom: 0
 		}
 		// Array for storing pinable elements
 		var _elements = [];
@@ -163,7 +161,7 @@
 			pinToTop: function(e) {
 				if(e.status == 'pinned-top') return;
 				e.status = 'pinned-top';
-				e.jq.css({ 'position':'fixed', 'height':e.jq.height(), 'width':e.jq.width(), 'top':_options.offset_top, 'bottom': 'auto', 'z-index':_options.zindex });
+				e.jq.css({ 'position':'fixed', 'height':e.jq.height(), 'width':e.jq.width(), 'top':_options.offset_top, 'bottom': 'auto' });
 				e.jq.removeClass(_classes.pinnedbottom).addClass(_classes.pinnedtop).addClass(_classes.pinned);
 				if(typeof _options.onpintop == 'function') _options.onpintop(e.jq);
 			},
