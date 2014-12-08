@@ -64,7 +64,7 @@ the public methods (see below).
 The options object can set any of the following properties:
 </p>
 
-<table summary="Options object properties">
+<table class="tabletrim" summary="Options object properties">
 <thead>
     <tr>
         <th width="30" scope="col">Property</th>
@@ -189,28 +189,28 @@ To utilize the public methods, simply capture the return in a variable and call 
 // Example of calling a public method
 $(document).ready(function() {
     var myPinnd = pinnd($('.mypinnd'));
-    myPinnd.enable();
+    myPinnd.off();
 });
 {% endhighlight %}
 </div>
 
 
-<h3>.disable()</h3>
+<h3>.off()</h3>
 <p>
-	The <code>disable()</code> method disables pinning for the associated elements.  Note that if elements are currently
-	in a pinned state, calling <code>disable()</code> will return them to their original positions.
+	The <code>off()</code> method disables pinning for the associated elements.  Note that if elements are currently
+	in a pinned state, calling <code>off()</code> will return them to their original positions.
 </p>
 
 
-<h3>.enable()</h3>
+<h3>.on()</h3>
 <p>
-	The <code>enable()</code> method enables pinning for the associated elements.  Note that calling <coee>enable()</code>
+	The <code>on()</code> method enables pinning for the associated elements.  Note that calling <coee>on()</code>
 	will automatically pin any necessary elements.
 </p>
 
 <div class="msg-info">
 	<div class="msgcontent">
-	Both the <code>enable()</code> and <code>disable()</code> methods only affect their associated elements.  This means
+	Both the <code>on()</code> and <code>off()</code> methods only affect their associated elements.  This means
 	that if you have created multiple sets of pinnable elements (to give them different options for example), calling
 	one of the public methods will only affect the set of elements associated with the public method you are calling.
 	</div>

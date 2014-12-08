@@ -51,7 +51,7 @@ html {
 }
 body {
     min-height: 100%;
-    font-size: 14px;
+    font-size: 13px;
     font-family: "Myriad Pro", "Trebuchet MS", sans-serif;
     line-height: 18px;
     margin-top: 40px;
@@ -138,13 +138,14 @@ img {
 table {
     border: none;
     width: 100%;
+    font-size: 12px;
 }
 thead th {
     background-color: #ddd;
     color: #666;
     text-align: left;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 11px;
 }
 thead th, thead td {
     border-bottom: 3px solid #999;
@@ -217,25 +218,6 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
     margin: 0;
 }
 
-
-/* =========================================================================== */
-/* Buttons
-/* =========================================================================== */
-.button { 
-    background-color: #1086c6; 
-    color: #fff; 
-    padding: 10px 15px; 
-    text-decoration: none; 
-    display: inline-block; 
-    margin-right: 10px; 
-    cursor: pointer;
-}
-.button:hover,
-.button:focus {
-    color: #fff;
-    background-color: #0a699e;
-    text-decoration: none;
-}
 
 
 /* =========================================================================== */
@@ -324,7 +306,7 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
     display: inline-block;
     height: 20px;
     line-height: 20px;
-    padding: 10px;
+    padding: 0px 10px;
     font: normal 11px exodemibold, "Trebuchet MS", sans-serif;
     text-transform: uppercase;
 }
@@ -339,11 +321,13 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
 #nav-updown .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -60px 0; }
 #nav-pinnd .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -90px 0; }
 #nav-shyft .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -120px 0; }
+#nav-tabletrim .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -150px 0; }
 
 #brevity #nav-brevity a.nav-link,
 #pinnd #nav-pinnd a.nav-link,
 #updown #nav-updown a.nav-link,
 #shyft #nav-shyft a.nav-link,
+#tabletrim #nav-tabletrim a.nav-link,
 #imgin #nav-imgin a.nav-link {
     width: 150px;
     color: #fff;
@@ -391,6 +375,9 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
     #nav {
         display: inline-block;
         background-color: transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
     #nav li {
         display: inline-block;
@@ -400,6 +387,35 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
         display: inline-block;
         overflow: hidden;
         transition: width .5s;
+    }
+    #nav .nav-link-text {
+        height: 100%;
+        line-height: 100%;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+    #nav .nav-link:hover .nav-link-text,
+    #nav .nav-link:focus .nav-link-text {
+        opacity: 1;
+        transition: opacity 1s;
+    }
+    #brevity #nav #nav-brevity a.nav-link,
+    #imgin #nav #nav-imgin a.nav-link,
+    #pinnd #nav #nav-pinnd a.nav-link,
+    #updown #nav #nav-updown a.nav-link,
+    #shyft #nav #nav-shyft a.nav-link,
+    #tabletrim #nav #nav-tabletrim a.nav-link {
+        width: 145px;
+        color: #333;
+        background-color: #fff;
+    }
+    #brevity #nav #nav-brevity .nav-link .nav-link-text, 
+    #imgin #nav #nav-imgin .nav-link .nav-link-text, 
+    #pinnd #nav #nav-pinnd .nav-link .nav-link-text, 
+    #updown #nav #nav-updown .nav-link .nav-link-text, 
+    #shyft #nav #nav-shyft .nav-link .nav-link-text, 
+    #tabletrim #nav #nav-tabletrim .nav-link .nav-link-text { 
+        opacity: 1; 
     }
 }
 
@@ -521,26 +537,29 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
 /* =========================================================================== */
 .button-row {
     clear: both;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 .button-group { 
     display: inline-block; 
     margin: 15px 0; 
 }
-.button-group a { 
-    cursor: pointer; 
+.button-group { 
 }
-a.button { 
-    font-size: 12px;
+.button { 
+    cursor: pointer; 
+    font-size: 10px;
     display: inline-block; 
     background-color: #0d85ff; 
     color: #fff; 
+    border: none;
     text-decoration: none; 
-    padding: 5px 15px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 15px; 
     margin: 0;
 }
-a.button:hover,
-a.button.active { 
+.button:hover,
+.button.active { 
     background-color: #0763c1;
 }
 /* Lightswitches */

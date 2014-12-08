@@ -1,0 +1,116 @@
+---
+layout: default
+title: Callbacks
+project: tabletrim
+---
+
+
+<h2>Callbacks</h2>
+
+<p>
+Callback functions can be defined as part of the <a href="{{ site.baseurl }}tabletrim/options">Options object</a>. 
+For more details about the specific parameters and usage for the callbacks, keep reading.
+</p>
+
+
+
+<h3>.oninit()</h3>
+<p>Triggered when the tabletrim instance finishes initializing.  The function passes a single parameter:</p>
+<ul>
+    <li><strong>table</strong>: jQuery object for the table</li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate tabletrim with an onload() callback
+var opts = {
+    onload: function(table) {
+        alert('tabletrim initialized');
+    }
+}
+tabletrim($('#tabletrim-example'), opts);
+{% endhighlight %}
+
+
+
+<h3>.ontrim()</h3>
+<p>Triggered when the table has finished trimming.  Passes a single parameter:</p>
+<ul>
+    <li><strong>table</strong>: jQuery object for the table</li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate tabletrim with an ontrim() callback
+var opts = {
+    ontrim: function(table) {
+        alert('table trimmed');
+    }
+}
+tabletrim($('#tabletrim-example'), opts);
+{% endhighlight %}
+
+
+
+<h3>.onuntrim()</h3>
+<p>Triggered when the table has finished untrimming.  Passes a single parameter:</p>
+<ul>
+    <li><strong>table</strong>: jQuery object for the table</li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate tabletrim with an onuntrim() callback
+var opts = {
+    ontrim: function(table) {
+        alert('table trimmed');
+    }
+}
+tabletrim($('#tabletrim-example'), opts);
+{% endhighlight %}
+
+
+
+<h3>.onactivate()</h3>
+<p>Triggered when the selected column has been activated.  Passes two parameters:</p>
+<ul>
+    <li><strong>table</strong>: jQuery object for the table</li>
+    <li><strong>column</strong>: Object containing the following information:
+        <ul>
+            <li><strong>index</strong>: Numeric index (starting at 1) for the activated column</li>
+            <li><strong>title</strong>: Title (string) of the activated column's header cell</li>
+            <li><strong>headercell</strong>: jQuery reference to the activated column's header cell</li>
+            <li><strong>bodycells</strong>: jQuery reference to the activated column's body cells</li>
+            <li><strong>allcells</strong>: jQuery refrerence to all cells in the activated column</li>
+        </ul>
+    </li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate tabletrim with an onactivate() callback
+var opts = {
+    ontrim: function(table, column) {
+        alert('column activated');
+    }
+}
+tabletrim($('#tabletrim-example'), opts);
+{% endhighlight %}
+
+
+
+<h3>.ondeactivate()</h3>
+<p>Triggered when the selected column has been deactivated.  Passes two parameters:</p>
+<ul>
+    <li><strong>table</strong>: jQuery object for the table</li>
+    <li><strong>column</strong>: Object containing the following information:
+        <ul>
+            <li><strong>index</strong>: Numeric index (starting at 1) for the deactivated column</li>
+            <li><strong>title</strong>: Title (string) of the deactivated column's header cell</li>
+            <li><strong>headercell</strong>: jQuery reference to the deactivated column's header cell</li>
+            <li><strong>bodycells</strong>: jQuery reference to the deactivated column's body cells</li>
+            <li><strong>allcells</strong>: jQuery refrerence to all cells in the deactivated column</li>
+        </ul>
+    </li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate tabletrim with an ondeactivate() callback
+var opts = {
+    ontrim: function(table, column) {
+        alert('column deactivated');
+    }
+}
+tabletrim($('#tabletrim-example'), opts);
+{% endhighlight %}

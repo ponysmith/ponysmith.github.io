@@ -13,7 +13,12 @@ require.config({
 /** 
  * Global
  */
-require(['jquery', 'libs/pinnd.min', 'libs/updown.min'], function($, pinnd, updown) {
+require(['jquery', 'libs/pinnd.min', 'libs/updown.min', 'libs/tabletrim.min'], function($, pinnd, updown) {
+
+	// Set tabletrim on tables
+	$('#page-content table.tabletrim').each(function() {
+		tabletrim($(this), { breakpoint: 600 });
+	});
 
 	// Initialize updown
 	updown();
@@ -98,12 +103,24 @@ if(window.pinnd_example) {
 
 // shyft examples
 if(window.shyft_example) {
-	require(['libs/shyft', 'libs/imgin.min'], function(shyft) {
+	require(['libs/shyft.min', 'libs/imgin.min'], function(shyft) {
 		imgin();
 		switch(window.shyft_example) {
 			case 'basic': shyft_basic(); break;
 			case 'options': shyft_options(); break;
 			case 'callbacks-methods': shyft_callbacks_methods(); break;
+			default: break;
+		}
+	});
+}
+
+// tabletrim examples
+if(window.tabletrim_example) {
+	require(['libs/tabletrim.min'], function(tabletrim) {
+		switch(window.tabletrim_example) {
+			case 'basic': tabletrim_basic(); break;
+			case 'methods': tabletrim_methods(); break;
+			case 'callbacks': tabletrim_callbacks(); break;
 			default: break;
 		}
 	});
