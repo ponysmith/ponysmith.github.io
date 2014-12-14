@@ -72,17 +72,24 @@ project: tabletrim
 
 <h3>Code for this example</h3>
 {% highlight javascript linenos %}
-tabletrim($('#tabletrim-example'));
+// Capture the tabletrim return 
+var TT = tabletrim($('#tabletrim-example'));
+// Bind buttons to trigger the public methods on the returned TT object
+$('#trigger-trim').on('click', function() {
+    TT.trim();
+});
+$('#trigger-untrim').on('click', function() {
+    TT.untrim();
+});
 {% endhighlight %}
 
 <script>
 var tabletrim_example = 'methods'; 
-var opts = { breakpoint: 640 }
 
 function tabletrim_methods() {
 
     // Capture the tabletrim return 
-    var TT = tabletrim($('#tabletrim-example'), opts);
+    var TT = tabletrim($('#tabletrim-example'));
     // Bind buttons to trigger the public methods on the returned TT object
     $('#trigger-trim').on('click', function() {
         TT.trim();

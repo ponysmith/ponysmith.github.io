@@ -68,7 +68,6 @@ project: tabletrim
 <h3>Code for this example</h3>
 {% highlight javascript linenos %}
 var opts = { 
-    breakpoint: 640,
     ontrim: function(table) {
         table.css({ 'background-color': '#fffccc' })
     },
@@ -82,7 +81,6 @@ tabletrim($('#tabletrim-example'), opts);
 <script>
 var tabletrim_example = 'callbacks'; 
 var opts = { 
-    breakpoint: 640,
     ontrim: function(table) {
         table.css({ 'background-color': '#fffccc' })
     },

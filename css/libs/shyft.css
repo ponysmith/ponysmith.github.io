@@ -10,11 +10,6 @@
 .shyft-prev, .shyft-next {position: absolute; z-index: 5; display: inline-block; cursor: pointer; }
 .shyft-nav { position: absolute; z-index: 5; }
 .shyft-navlink { display: inline-block; cursor: pointer; }
-/** 
- * End of core styles
- */
-
-
 
 
 /**  
@@ -29,7 +24,7 @@
     color: #fff;
     text-decoration: none;
     font-size: 2em;
-    padding: 10px 20px;    
+    padding: 10px 15px;    
  }
 .shyft-prev:hover,
 .shyft-next:hover {
@@ -56,7 +51,7 @@
 .shyft-navlink {
     color: #fff;
     text-decoration: none;
-    padding: 5px 15px;
+    padding: 10px 20px;
 }
 .shyft-navlink-active {
     background-color: #fff;

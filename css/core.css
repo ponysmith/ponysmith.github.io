@@ -183,7 +183,7 @@ code {
 pre {
     margin: 0;
     display: block;
-    background-color: #efefef;
+    background-color: #fff;
     padding: 15px;
     border: 1px solid #ccc;
     overflow: auto;
@@ -389,8 +389,9 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
         transition: width .5s;
     }
     #nav .nav-link-text {
-        height: 100%;
-        line-height: 100%;
+        vertical-align: top;
+        height: 40px;
+        line-height: 40px;
         opacity: 0;
         transition: opacity 1s;
     }

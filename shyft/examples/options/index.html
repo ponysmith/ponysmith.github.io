@@ -174,6 +174,12 @@ of the various options, please visit the <a href="{{ site.baseurl }}shyft/option
 				<tbody>
 					<tr>
 						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="autoplay" id="option-usecss" />
+							<label for="option-usecss">usecss</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
 							<input type="checkbox" class="lightswitch truefalse" value="true" name="autoplay" id="option-autoplay" />
 							<label for="option-autoplay">autoplay</label>
 						</td>
@@ -247,6 +253,7 @@ function shyft_options() {
 		options.nexthtml = $('#option-nexthtml').find(':selected').attr('value');
 		options.navhtml = $('#option-navhtml').find(':selected').attr('value');
 
+		options.usecss = ($('#option-usecss').is(':checked')) ? true : false;
 		options.autoplay = ($('#option-autoplay').is(':checked')) ? true : false;
 		options.loop = ($('#option-loop').is(':checked')) ? true : false;
 		options.prev = ($('#option-prev').is(':checked')) ? true : false;
