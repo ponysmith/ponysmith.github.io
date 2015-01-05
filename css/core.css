@@ -512,7 +512,7 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
     }    
 }
 /* 768 */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
     #sidebar-toggle-label {
         display: none;
         left: -99999px;
