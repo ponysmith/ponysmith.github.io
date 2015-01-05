@@ -358,7 +358,7 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
     left: -99999px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     #nav-toggle-input:checked ~ #nav-toggle-label {
         background-color: #222;
     }    
@@ -503,7 +503,7 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
     position: absolute;
     left: -99999px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     #sidebar-toggle-input:checked ~ #sidebar-toggle-label:before {
         background: transparent url(../images/sprites.png) no-repeat -80px -40px;
     }
@@ -512,7 +512,7 @@ div.msg-info .msgcontent { border: 1px solid #eed673; }
     }    
 }
 /* 768 */
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 768px) {
     #sidebar-toggle-label {
         display: none;
         left: -99999px;
@@ -611,7 +611,7 @@ input.lightswitch.truefalse:checked~label:before { background-position: -141px -
     line-height: 24px;
 }
 /* 768 */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     #page-content {
         max-width: 960px;
         padding: 20px 10px;
@@ -643,7 +643,7 @@ input.lightswitch.truefalse:checked~label:before { background-position: -141px -
     text-decoration: none;
     display: inline-block;
     height: 40px;
-    line-height: 40px;
+    line-height: 40px; 
 }
 #footer-github a:before {
     content: '';
