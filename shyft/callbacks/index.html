@@ -14,7 +14,7 @@ specific parameters and usage for the callbacks, keep reading.
 
 
 
-<h3>.onload(count, current)</h3>
+<h3>.onload( count, current )</h3>
 <p>Triggered when the carousel finishes loading.  The function passes two arguments:</p>
 <ul>
     <li><strong>count</strong>: Integer for the total number of slides for the current carousel</li>
@@ -33,7 +33,7 @@ shyft($('#myshyft', opts));
 
 
 
-<h3>.onupdate(count, current)</h3>
+<h3>.onupdate( count, current )</h3>
 <p>Triggered when the carousel finishes updating.  Functionally, this callback is exactly the same as <code>onload</code>.
 The only difference is that <code>onload()</code> is only triggered when the plugin initially loads.  When the carousel
 is reloaded via the public method <code>update()</code>, the <code>onupdate</code> callback is triggered instead.
@@ -116,7 +116,7 @@ shyft($('#myshyft', opts));
 
 
 
-<h3>.onprechange(oldindex, newindex)</h3>
+<h3>.onprechange( oldindex, newindex )</h3>
 <p>Triggered before a slide change begins.  The function passes two arguments:</p>
 <ul>
     <li><strong>old</strong>: Integer for the old slide (starting at 1)</li>
@@ -135,7 +135,7 @@ shyft($('#myshyft', opts));
 
 
 
-<h3>.onpostchange(oldindex, newindex)</h3>
+<h3>.onpostchange( oldindex, newindex )</h3>
 <p>Triggered after a slide change ends.  The function passes two arguments:</p>
 <ul>
     <li><strong>old</strong>: Integer for the old slide (starting at 1)</li>
@@ -152,10 +152,51 @@ shyft($('#myshyft', opts));
 {% endhighlight %}
 
 
+<h3>.onswiperight( el )</h3>
+<p>Triggered when a right swipe is detected. The function passes a single argument:</p>
+<ul>
+    <li><strong>el</strong>: jQuery object for the carousel element</li>
+</ul>
+<div id="abbr-result" class="msg-info">
+    <div class="msgcontent">
+        The <code>onswiperight()</code> callback will only be fired if touch is enabled (<code>options.touch = true</code>) and if the swipe event results in a slide change.
+    </div>
+</div>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onswiperight() callback
+var opts = {
+    onswiperight: function(el) {
+        el.css({ 'border': '10px solid blue' });
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+<h3>.onswipeleft( el )</h3>
+<p>Triggered when a left swipe is detected. The function passes a single argument:</p>
+<ul>
+    <li><strong>el</strong>: jQuery object for the carousel element</li>
+</ul>
+<div id="abbr-result" class="msg-info">
+    <div class="msgcontent">
+        The <code>onswipeleft()</code> callback will only be fired if touch is enabled (<code>options.touch = true</code>) and if the swipe event results in a slide change.
+    </div>
+</div>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onswipeleft() callback
+var opts = {
+    onswipeleft: function(el) {
+        el.css({ 'border': '10px solid blue' });
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
 
 <h3>.onplay()</h3>
 <p>Triggered when the slideshow status is changed to <strong>play</strong>.  The function passes no arguments</p>
-
 {% highlight javascript linenos %}
 // Instantiate shyft with an onplay() callback
 var opts = {

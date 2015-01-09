@@ -24,7 +24,7 @@
     color: #fff;
     text-decoration: none;
     font-size: 2em;
-    padding: 10px 15px;    
+    padding: 5px 15px;    
  }
 .shyft-prev:hover,
 .shyft-next:hover {
@@ -50,12 +50,15 @@
 }
 .shyft-navlink {
     color: #fff;
+    background-color: #000;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 5px 15px;
+    transition: all .8s;
 }
 .shyft-navlink-active {
     background-color: #fff;
     color: #000;
+    transition: all .8s;
 }
 .shyft-navlink-active-secondary {
     background-color: #555;

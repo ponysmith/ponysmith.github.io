@@ -16,14 +16,11 @@ of the various options, please visit the <a href="{{ site.baseurl }}shyft/option
 </p>
 
 <div id="shyft-example">
-    <img src="{{ site.baseurl }}images/examples/image-01.jpg" alt="" width="680" />
-    <img src="{{ site.baseurl }}images/examples/image-02.jpg" alt="" width="680" />
-    <img src="{{ site.baseurl }}images/examples/image-03.jpg" alt="" width="680" />
-    <img src="{{ site.baseurl }}images/examples/image-04.jpg" alt="" width="680" />
-    <img src="{{ site.baseurl }}images/examples/image-05.jpg" alt="" width="680" />
-    <img src="{{ site.baseurl }}images/examples/image-06.jpg" alt="" width="680" />
-    <img src="{{ site.baseurl }}images/examples/image-07.jpg" alt="" width="680" />
-    <img src="{{ site.baseurl }}images/examples/image-08.jpg" alt="" width="680" />
+    <img src="{{ site.baseurl }}images/examples/image-01.jpg" alt="" />
+    <img src="{{ site.baseurl }}images/examples/image-02.jpg" alt="" />
+    <img src="{{ site.baseurl }}images/examples/image-03.jpg" alt="" />
+    <img src="{{ site.baseurl }}images/examples/image-04.jpg" alt="" />
+    <img src="{{ site.baseurl }}images/examples/image-05.jpg" alt="" />
 </div>
 
 <h3>Set options</h3>
@@ -174,8 +171,14 @@ of the various options, please visit the <a href="{{ site.baseurl }}shyft/option
 				<tbody>
 					<tr>
 						<td>
-							<input type="checkbox" class="lightswitch truefalse" value="true" name="autoplay" id="option-usecss" />
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="usecss" id="option-usecss" />
 							<label for="option-usecss">usecss</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox" class="lightswitch truefalse" value="true" name="touch" id="option-touch" checked="checked"/>
+							<label for="option-touch">touch</label>
 						</td>
 					</tr>
 					<tr>
@@ -254,13 +257,13 @@ function shyft_options() {
 		options.navhtml = $('#option-navhtml').find(':selected').attr('value');
 
 		options.usecss = ($('#option-usecss').is(':checked')) ? true : false;
+		options.touch = ($('#option-touch').is(':checked')) ? true : false;
 		options.autoplay = ($('#option-autoplay').is(':checked')) ? true : false;
 		options.loop = ($('#option-loop').is(':checked')) ? true : false;
 		options.prev = ($('#option-prev').is(':checked')) ? true : false;
 		options.next = ($('#option-next').is(':checked')) ? true : false;
 		options.nav = ($('#option-nav').is(':checked')) ? true : false;
 
-		console.log(options);
 		myshyft.update(options);
 	});
 }
