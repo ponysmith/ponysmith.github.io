@@ -119,6 +119,7 @@ if(window.tabletrim_example) {
 	require(['libs/tabletrim.min'], function(tabletrim) {
 		switch(window.tabletrim_example) {
 			case 'basic': tabletrim_basic(); break;
+			case 'controls': tabletrim_controls(); break;
 			case 'methods': tabletrim_methods(); break;
 			case 'callbacks': tabletrim_callbacks(); break;
 			default: break;
