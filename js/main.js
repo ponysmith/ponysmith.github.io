@@ -3,7 +3,13 @@
  */
 require.config({
     paths: {
-        jquery: '/js/libs/jquery-1.11.1.min',
+				jquery: '/js/libs/jquery-1.11.1.min',
+				pinnd: '/js/libs/pinnd.min',
+				updown: '/js/libs/updown.min',
+				tabletrim: '/js/libs/tabletrim.min',
+				brevity: '/js/libs/brevity.min',
+				shyft: '/js/libs/shyft.min',
+				imgin: '/js/libs/imgin.min'
     }
 });
 
@@ -13,7 +19,7 @@ require.config({
 /** 
  * Global
  */
-require(['jquery', 'libs/pinnd.min', 'libs/updown.min', 'libs/tabletrim.min'], function($, pinnd, updown) {
+require(['jquery', 'pinnd', 'updown', 'tabletrim'], function($, pinnd, updown) {
 
 	// Set tabletrim on tables
 	$('#page-content table.tabletrim').each(function() {
@@ -56,7 +62,7 @@ if(window.isHomepage) {
 
 // brevity examples
 if(window.brevity_example) {
-	require(['libs/brevity.min'], function(brevity) {
+	require(['brevity'], function(brevity) {
 		switch(window.brevity_example) {
 			case 'basic': brevity_basic(); break;
 			case 'namespace': brevity_namespace(); break;
@@ -68,7 +74,7 @@ if(window.brevity_example) {
 
 // updown examples
 if(window.updown_example) {
-	require(['libs/updown.min'], function(updown) {
+	require(['updown'], function(updown) {
 		switch(window.updown_example) {
 			case 'basic': updown_basic(); break;
 			default: break;
@@ -78,7 +84,7 @@ if(window.updown_example) {
 
 // imgin examples
 if(window.imgin_example) {
-	require(['libs/imgin.min'], function(updown) {
+	require(['imgin'], function(updown) {
 		switch(window.imgin_example) {
 			case 'basic': imgin_basic(); break;
 			case 'methods': imgin_methods(); break;
@@ -90,7 +96,7 @@ if(window.imgin_example) {
 
 // pinnd examples
 if(window.pinnd_example) {
-	require(['libs/pinnd.min'], function(pinnd) {
+	require(['pinnd'], function(pinnd) {
 		switch(window.pinnd_example) {
 			case 'basic': pinnd_basic(); break;
 			case 'context': pinnd_context(); break;
@@ -103,7 +109,7 @@ if(window.pinnd_example) {
 
 // shyft examples
 if(window.shyft_example) {
-	require(['libs/shyft.min', 'libs/imgin.min'], function(shyft) {
+	require(['shyft', 'imgin'], function(shyft) {
 		imgin();
 		switch(window.shyft_example) {
 			case 'basic': shyft_basic(); break;
@@ -116,7 +122,7 @@ if(window.shyft_example) {
 
 // tabletrim examples
 if(window.tabletrim_example) {
-	require(['libs/tabletrim.min'], function(tabletrim) {
+	require(['tabletrim'], function(tabletrim) {
 		switch(window.tabletrim_example) {
 			case 'basic': tabletrim_basic(); break;
 			case 'controls': tabletrim_controls(); break;
