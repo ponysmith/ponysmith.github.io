@@ -1,0 +1,84 @@
+/** 
+ * Homepage Styles
+ */
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+#homepage {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: transparent url(../images/homepage-bg.png) no-repeat center center;
+	background-size: cover;
+}
+#homepage-content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	padding: 10%;
+	background-color: rgba(0, 0, 0, .5);
+	color: #ccc;
+}
+#homepage-content h1 {
+}
+#homepage-content p {
+}
+
+
+#homepage-nav {
+    vertical-align: top;
+}
+#homepage-nav ul {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+}
+#homepage-nav li {
+    list-style: none;
+    display: inline-block;
+    width: 150px;
+    vertical-align: middle;
+    margin: 0;
+    line-height: 0;
+}
+#homepage-nav a.nav-link {
+    color: #fff;
+    height: 40px;
+    display: block;
+    padding: 5px 10px;
+    width: auto;
+    border: 1px solid transparent;
+}
+#homepage-nav a.nav-link:hover,
+#homepage-nav a.nav-link:focus {
+	background-color: #222;
+	border: 1px solid #555;
+}
+#homepage-nav .nav-link-icon {
+    vertical-align: middle;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin: 5px 0 5px 5px;
+    background: transparent url(../images/sprites.png) no-repeat 0 0;
+}
+#homepage-nav .nav-link-text {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 10px;
+    font: normal 11px exodemibold, "Trebuchet MS", sans-serif;
+    text-transform: uppercase;
+}
+#homepage-nav-brevity .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat 0 0; }
+#homepage-nav-imgin .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -30px 0; }
+#homepage-nav-updown .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -60px 0; }
+#homepage-nav-pinnd .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -90px 0; }
+#homepage-nav-shyft .nav-link-icon { background: transparent url(../images/sprites.png) no-repeat -120px 0; }
