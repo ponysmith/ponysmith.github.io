@@ -1,18 +1,18 @@
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/libs/tabletrim.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/libs/tabletrim.css' | relative_url }}" />
 
 
 {% case page.project %}
 	{% when 'brevity' %}
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-brevity.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/project-brevity.css' | relative_url }}" />
 	{% when 'imgin' %}
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-imgin.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/project-imgin.css' | relative_url }}" />
 	{% when 'pinnd' %}
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-pinnd.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/project-pinnd.css' | relative_url }}" />
 	{% when 'shyft' %}
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/libs/shyft.css" />
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-shyft.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/libs/shyft.css' | relative_url }}" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/project-shyft.css' | relative_url }}" />
 	{% when 'tabletrim' %}
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-tabletrim.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/project-tabletrim.css' | relative_url }}" />
 	{% when 'updown' %}
-	    <link rel="stylesheet" type="text/css" media="screen" href="{{ site.baseurl }}css/project-updown.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="{{ 'css/project-updown.css' | relative_url }}" />
 {% endcase %}
