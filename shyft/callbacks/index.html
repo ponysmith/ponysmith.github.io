@@ -1,0 +1,251 @@
+---
+layout: default
+title: Callbacks
+project: shyft
+---
+
+
+<h2>Callbacks</h2>
+
+<p>
+Callback functions can be defined as part of the <a href="{{ site.baseurl }}shyft/options">Options object</a>. For more details about the 
+specific parameters and usage for the callbacks, keep reading.
+</p>
+
+
+
+<h3>.onload( count, current )</h3>
+<p>Triggered when the carousel finishes loading.  The function passes two arguments:</p>
+<ul>
+    <li><strong>count</strong>: Integer for the total number of slides for the current carousel</li>
+    <li><strong>current</strong>: Integer for the current slide (starting at 1)</li>
+</ul>
+
+{% highlight javascript linenos %}
+// Instantiate shyft with an onload() callback
+var opts = {
+    onload: function(count, current) {
+        alert('shyft initialized.  Total slides: ' + count + '.  Current slide: ' + current);
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+
+<h3>.onupdate( count, current )</h3>
+<p>Triggered when the carousel finishes updating.  Functionally, this callback is exactly the same as <code>onload</code>.
+The only difference is that <code>onload()</code> is only triggered when the plugin initially loads.  When the carousel
+is reloaded via the public method <code>update()</code>, the <code>onupdate</code> callback is triggered instead.
+</p>
+<p>Passes two arguments</p>
+<ul>
+    <li><strong>count</strong>: Integer for the total number of slides for the current carousel</li>
+    <li><strong>current</strong>: Integer for the current slide (starting at 1)</li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onupdate() callback
+var opts = {
+    onupdate: function(count, current) {
+        alert('shyft updated.  Total slides: ' + count + '.  Current slide: ' + current);
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+
+<h3>.ondestroy()</h3>
+<p>
+Triggered when the carousel is destroyed via the public method <code>destroy()</code>. Note that while updating the 
+carousel techically utilizes the <code>destroy()</code> method, the <code>ondestroy()</code> callback is not triggered as
+part of the update cycle.
+</p>
+<p>Passes no arguments.</p>
+
+{% highlight javascript linenos %}
+// Instantiate shyft with an ondestroy() callback
+var opts = {
+    ondestroy: function(count, current) {
+        alert('No more shyft :( ');
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+
+<h3>.onadd( slide )</h3>
+<p>Triggered when a slide is added to the carousel via the <code>add()</code> method.</p>
+<p>Passes a single argument:</p>
+<ul>
+    <li><strong>slide</strong>: jQuery reference to the added slide.  The element does not need to have a wrapper.
+        <strong>shyft</strong> will wrap the element appropriately.</li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onadd() callback
+var opts = {
+    onadd: function(slide) {
+        slide.css('opacity', .5);    
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+
+<h3>.onremove( slide )</h3>
+<p>
+Triggered when a slide is removed from the carousel via the <code>remove()</code> method.
+</p>
+<p>Passes a single argument:</p>
+<ul>
+    <li><strong>slide</strong>: jQuery reference to the removed slide.  Note that any wrappers added by <strong>shyft</strong>
+        will be removed from the object.</li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onremove() callback
+var opts = {
+    onremove: function(slide) {
+        // Add the removed item into another area of the DOM
+        $('#unused-slides').append(slide);
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+
+<h3>.onprechange( oldindex, newindex )</h3>
+<p>Triggered before a slide change begins.  The function passes two arguments:</p>
+<ul>
+    <li><strong>old</strong>: Integer for the old slide (starting at 1)</li>
+    <li><strong>new</strong>: Integer for the current slide (starting at 1)</li>
+</ul>
+
+{% highlight javascript linenos %}
+// Instantiate shyft with an onprechange() callback
+var opts = {
+    onprechange: function(current, new) {
+        alert('Pre change.  Old slide was: ' + old + '.  New slide will be: ' + new);
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+
+<h3>.onpostchange( oldindex, newindex )</h3>
+<p>Triggered after a slide change ends.  The function passes two arguments:</p>
+<ul>
+    <li><strong>old</strong>: Integer for the old slide (starting at 1)</li>
+    <li><strong>new</strong>: Integer for the current slide (starting at 1)</li>
+</ul>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onpostchange() callback
+var opts = {
+    onpostchange: function(old, new) {
+        alert('Post change.  Old slide was: ' + old + '.  New slide is: ' + new);
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+<h3>.onswiperight( el )</h3>
+<p>Triggered when a right swipe is detected. The function passes a single argument:</p>
+<ul>
+    <li><strong>el</strong>: jQuery object for the carousel element</li>
+</ul>
+<div id="abbr-result" class="msg-info">
+    <div class="msgcontent">
+        The <code>onswiperight()</code> callback will only be fired if touch is enabled (<code>options.touch = true</code>) and if the swipe event results in a slide change.
+    </div>
+</div>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onswiperight() callback
+var opts = {
+    onswiperight: function(el) {
+        el.css({ 'border': '10px solid blue' });
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+<h3>.onswipeleft( el )</h3>
+<p>Triggered when a left swipe is detected. The function passes a single argument:</p>
+<ul>
+    <li><strong>el</strong>: jQuery object for the carousel element</li>
+</ul>
+<div id="abbr-result" class="msg-info">
+    <div class="msgcontent">
+        The <code>onswipeleft()</code> callback will only be fired if touch is enabled (<code>options.touch = true</code>) and if the swipe event results in a slide change.
+    </div>
+</div>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onswipeleft() callback
+var opts = {
+    onswipeleft: function(el) {
+        el.css({ 'border': '10px solid blue' });
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+
+<h3>.onplay()</h3>
+<p>Triggered when the slideshow status is changed to <strong>play</strong>.  The function passes no arguments</p>
+{% highlight javascript linenos %}
+// Instantiate shyft with an onplay() callback
+var opts = {
+    onplay: function() {
+        alert('Play');
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+<h3>.onpause()</h3>
+<p>Triggered when the slideshow status is changed to <strong>pause</strong>.  The function passes no arguments</p>
+
+{% highlight javascript linenos %}
+// Instantiate shyft with an onpause() callback
+var opts = {
+    onpause: function() {
+        alert('Pause');
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+<h3>.onstart()</h3>
+<p>Triggered when the slideshow status is changed to <strong>start</strong>.  The function passes no arguments</p>
+
+{% highlight javascript linenos %}
+// Instantiate shyft with an onstart() callback
+var opts = {
+    onstart: function() {
+        alert('Start');
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+
+
+<h3>.onstop()</h3>
+<p>Triggered when the slideshow status is changed to <strong>stop</strong>.  The function passes no arguments</p>
+
+{% highlight javascript linenos %}
+// Instantiate shyft with an onstop() callback
+var opts = {
+    onstop: function() {
+        alert('Stop');
+    }
+}
+shyft($('#myshyft', opts));
+{% endhighlight %}
+

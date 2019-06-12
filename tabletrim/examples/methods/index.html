@@ -1,0 +1,101 @@
+---
+layout: default
+title: Public Methods
+project: tabletrim
+---
+
+
+<h2>Public Methods</h2>
+
+<div class="msg-info">
+    <div class="msgcontent">
+        The table below utilizes the <strong>tabletrim</strong> public methods <code>trim()</code>
+        and <code>untrim()</code>.  Click on the buttons above the table to trigger the public methods.
+    </div>
+</div>
+
+
+<div class="button-row">
+    <button class="button" id="trigger-trim">trim</button>
+    <button class="button" id="trigger-untrim">untrim</button>
+</div>
+
+<table class="tt-example" id="tabletrim-example" cellspacing="0" cellpadding="0" width="100%">
+    <thead>
+        <tr>
+            <th scope="col" style="width: 130px;">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">superman</th>
+            <td>Clark</td>
+            <td>Kent</td>
+            <td>man.of.steel@gmail.com</td>
+        </tr>
+        <tr>
+            <th scope="row">batman</th>
+            <td>Bruce</td>
+            <td>Wayne</td>
+            <td>dark.knight@gmail.com</td>
+        </tr>
+        <tr>
+            <th scope="row">wonderwoman</th>
+            <td>Diana</td>
+            <td>Prince</td>
+            <td>my.invisible.jet@gmail.com</td>
+        </tr>
+        <tr>
+            <th scope="row">professorx</th>
+            <td>Charles</td>
+            <td>Xavier</td>
+            <td>professor.x@gmail.com</td>
+        </tr>
+        <tr>
+            <th scope="row">hulk</th>
+            <td>Bruce</td>
+            <td>Banner</td>
+            <td>green.machine@gmail.com</td>
+        </tr>
+        <tr>
+            <th scope="row">wolverine</th>
+            <td>Logan</td>
+            <td>?</td>
+            <td>weapon.x@gmail.com</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3>Code for this example</h3>
+{% highlight javascript linenos %}
+// Capture the tabletrim return 
+var TT = tabletrim($('#tabletrim-example'));
+// Bind buttons to trigger the public methods on the returned TT object
+$('#trigger-trim').on('click', function() {
+    TT.trim();
+});
+$('#trigger-untrim').on('click', function() {
+    TT.untrim();
+});
+{% endhighlight %}
+
+<script>
+var tabletrim_example = 'methods'; 
+
+function tabletrim_methods() {
+
+    // Capture the tabletrim return 
+    var TT = tabletrim($('#tabletrim-example'));
+    // Bind buttons to trigger the public methods on the returned TT object
+    $('#trigger-trim').on('click', function() {
+        TT.trim();
+    });
+    $('#trigger-untrim').on('click', function() {
+        TT.untrim();
+    });
+}
+</script>   

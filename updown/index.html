@@ -1,0 +1,114 @@
+---
+layout: default
+title: Documentation
+project: updown
+---
+
+<p>
+    <strong>updown.js</strong> is a small JS utility script that publishes custom events at defined breakpoints. The
+    goal is to allow your Javascript to bind and unbind events or take specific actions at breakpoints, thus making
+    your Javascript just as responsive as your CSS can be with media queries.
+</p>
+<p> 
+    <strong>updown.js</strong> fires a custom event any time the window is resized and passes one of the predefined (or user-defined) breakpoints.  Custom <strong>updown</strong> events use the breakpoint size for their name and are namespaced with <code>up</code> or <code>down</code> depending on the direction of the resize.  For example, resizing the window from 1000 pixels wide to 1100 pixels wide would pass the 1024 breakpoint, firing the <code>1024</code> event.  Since the window size has increased, the <code>up</code> namespace is used, meaning the fired event is <code>1024.up</code>.
+</p>
+
+
+
+<h2>Dependencies</h2>
+<strong>updown.js</strong> requires jQuery 1.7+ to run.</p>
+
+
+
+<h2>Usage</h2>
+
+<p>
+Once the library has been included, you can instantiate <strong>updown</strong> by calling the <code>updown()</code> 
+function in jQuery's <code>document.ready</code>.  
+</p>
+
+
+<div class="code-wrapper">
+{%highlight javascript linenos %}
+$(document).ready(function() {
+    updown();
+});
+{% endhighlight %}
+</div>
+
+
+<p>
+Once the library has been instantiated, you can bind your javascript to the custom events (events are fired on the window object):
+</p>
+
+<div class="code-wrapper">
+{%highlight javascript linenos %}
+$(window).on('1024.up', function() { 
+    // This code will execute when the window width increases and passes 1024 pixels
+});
+$(window).on('768.down', function() { 
+    // This code will execute when the window width decreases and passes 768 pixels
+});
+{% endhighlight %}
+</div>
+
+
+<h3>Return value</h3>
+Calling <code>updown()</code> returns an <strong>array</strong> of the registered breakpoints.  This can be helpful in knowing
+what breakpoints are available if you've registered additional breakpoints.
+
+
+
+
+<h2>Options</h2>
+
+<p>
+The <code>updown()</code> function takes an options object as its single (optional) parameter.  Any of the following 
+options can be set using the options parameter.
+</p>
+
+<table class="tabletrim" summary="Object properties for the updown.js constructor function parameter">
+<thead>
+<tr>
+    <th scope="col" width="50">Parameter</th>
+    <th scope="col" width="50">Type</th>
+    <th scope="col" width="200">Default</th>
+    <th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>lag</td>
+    <td>int</td>
+    <td>100</td>
+    <td>
+        Time in milliseconds to wait after a resize event finishes before checking for passed breakpoints.  
+        The default of 100 should be fine in most cases.  Setting the number higher will improve performance 
+        but will create small delay before events are fired.
+    </td>
+</tr>
+<tr>
+    <td>breakpoints</td>
+    <td>array</td>
+    <td>[320, 480, 768, 1024, 1280]</td>
+    <td>
+        Array of breakpoints to publish events for.  Any breakpoints passed in this parameter will be added 
+        to (not overwrite) the default
+    </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Example using options object</h3>
+<div class="code-wrapper">
+{%highlight javascript %}
+$(document).ready(function() {
+    var opts = {
+        lag: 200,
+        breakpoints: [640]
+    }
+    updown(opts);
+});
+{% endhighlight %}
+</div>

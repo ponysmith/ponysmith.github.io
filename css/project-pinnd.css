@@ -1,0 +1,41 @@
+/** 
+ * Project specific CSS for pinnd
+ */
+ 
+.dummy-text {
+	color: #bbb;
+	border-color: #bbb;
+}
+.pinnd-example {
+	background-color: #555;
+	border: 5px solid #333;
+	padding: 20px;
+	color: #fff;
+	margin: 0;
+	text-align: left;
+}
+#pinnd-context {
+	position: relative;
+	background-color: #ffffcc;
+	border: 1px solid #d0cfa8;
+	padding: 10px;
+}
+#pinnd-toggle {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+}
+#pinnd-toggle::before {
+	content: '';
+	display: inline-block;
+	margin-right: 10px;
+	border: 5px solid #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+#pinnd-toggle.on { color: #38d000; }
+#pinnd-toggle.on::before { border: 5px solid #38d000; }
+#pinnd-toggle.off { color: #ff1a48; }
+#pinnd-toggle.off::before { border: 5px solid #ff1a48; }
+

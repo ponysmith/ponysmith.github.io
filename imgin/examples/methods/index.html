@@ -1,0 +1,100 @@
+---
+layout: default
+title: Public Methods
+project: imgin
+---
+
+
+<p>
+	The example below uses the public methods <code>force()</code> and <code>refresh()</code>. 
+</p>
+<ul>
+    <li>
+        The <strong>Add images</strong> button will dynamically add new lazy-loadable images to the DOM
+    </li>
+    <li>
+        The <strong>refresh()</strong> button will update the internal array of lazy-loadable images and trigger a load cycle
+    </li>
+    <li>
+        The <strong>force()</strong> button will automatically load any unloaded images.  This only works for images that 
+        are in <strong>imgin</strong>'s interal array.  If you've just added new images via the <strong>Add images</strong>
+        button, you'll need to <code>refresh()</code> before you can <code>force()</code>.
+    </li>    
+</ul>
+
+<p>
+<a id="add" class="button">Add images</a>
+<a id="refresh" class="button">refresh()</a>
+<a id="force" class="button">force()</a>
+</p>
+
+
+<h2>Example</h2>
+<div id="imgs">   
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/examples/image-01.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/examples/image-02.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/examples/image-03.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/examples/image-04.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/examples/image-05.jpg" /></div>
+    <div class="img"><img data-imginsrc="{{ site.baseurl }}images/examples/image-06.jpg" /></div>
+</div>
+
+
+<h2>Code for this example</h2>
+{% highlight javascript linenos %}
+    // Initialize imgin and store the return object
+    // Adding a negative offset so you can see part of the unloaded image before it loads
+    var I = imgin({ offset: -100 });
+    // Just a little counter for adding images
+    imgnum = 7;
+
+    // Wire up the buttons
+    $('#force').on('click', function(e) {
+        I.force();
+    });
+    $('#refresh').on('click', function(e) {
+        I.refresh();
+    });
+    $('#add').on('click', function(e) {
+        for(i=0; i<3; i++) {
+            var paddedImgNum = imgnum.toString();
+            if(paddedImgNum.length == 1) paddedImgNum = '0' + paddedImgNum;
+            $('#imgs').prepend("\n" + '<div class="img"><img data-imginsrc="/images/examples/image-' + paddedImgNum + '.jpg" /></div>');
+            imgnum++
+        }
+        if(imgnum > 18) imgnum = 1;
+    });
+{% endhighlight %}
+
+<script>
+var imgin_example = 'methods'; 
+
+function imgin_methods() {
+
+    // Initialize imgin and store the return object
+    // Adding a negative offset so you can see part of the unloaded image before it loads
+	var I = imgin();
+    // Just a little counter for adding images
+    imgnum = 7;
+
+    // Wire up the buttons
+    $('#force').on('click', function(e) {
+        I.force();
+    });
+
+    $('#refresh').on('click', function(e) {
+        I.refresh();
+    });
+
+    $('#add').on('click', function(e) {
+        for(i=0; i<2; i++) {
+            var paddedImgNum = imgnum.toString();
+            if(paddedImgNum.length == 1) paddedImgNum = '0' + paddedImgNum;
+            $('#imgs').prepend("\n" + '<div class="img"><img data-imginsrc="/images/examples/image-' + paddedImgNum + '.jpg" /></div>');
+            imgnum++
+        }
+        if(imgnum > 18) imgnum = 1;
+    });
+
+}
+</script>
